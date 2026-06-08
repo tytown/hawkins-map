@@ -4114,6 +4114,38 @@ function locColor(loc, S) {
   return S.red;
 }
 
+const LEVEL_DESCRIPTIONS = {
+  20:  { name: "Shame",     emotion: "Humiliation",  process: "Destruction",     god_view: "Despising",    life_view: "Miserable",   description: "The lowest level — barely above death. Characterized by self-contempt, banishment, and the elimination of self. Prone to cruelty toward self and others. The origin of much illness and severe psychological pathology." },
+  30:  { name: "Guilt",     emotion: "Blame",        process: "Destruction",     god_view: "Vindictive",   life_view: "Evil",        description: "Associated with remorse, self-punishment, masochism, and victimhood. The source of much psychosomatic disease. Society uses guilt as a mechanism of control." },
+  50:  { name: "Apathy",    emotion: "Despair",      process: "Abdication",      god_view: "Condemning",   life_view: "Hopeless",    description: "Poverty, homelessness, and the inability to avail oneself of help. Characterized by neediness and dependency. The world and the future look hopeless." },
+  75:  { name: "Grief",     emotion: "Regret",       process: "Despondency",     god_view: "Uncaring",     life_view: "Tragic",      description: "Pervasive sadness, loss, and despondency. Seen in bereavement, depression, and the energy field of mourning. Life is viewed as tragic." },
+  100: { name: "Fear",      emotion: "Anxiety",      process: "Withdrawal",      god_view: "Punitive",     life_view: "Frightening", description: "Fear of the world dominates this level. Seen as the basis of much social activity — fear of enemies, aging, death, rejection. Energy goes into hiding and escape. Inhibits growth." },
+  125: { name: "Desire",    emotion: "Craving",      process: "Enslavement",     god_view: "Denying",      life_view: "Disappointing", description: "The motivating force for much of society — desire for money, prestige, power, sex. Insatiable by nature. Desire enslaves; it is the source of addiction. Disappointed desires lead to frustration." },
+  150: { name: "Anger",     emotion: "Hate",         process: "Aggression",      god_view: "Vengeful",     life_view: "Antagonistic", description: "Anger from frustrated desire can lead to either constructive or destructive action. Seen in irritability, resentment, and the capacity for violence. The world is hostile." },
+  175: { name: "Pride",     emotion: "Scorn",        process: "Inflation",       god_view: "Indifferent",  life_view: "Demanding",   description: "The level most people aspire to from below 200. Feels positive compared to lower levels but is still below integrity. Pride is defensive and vulnerable — it can instantly collapse to shame. Nationalism, religious fanaticism, and racism are its byproducts." },
+  200: { name: "Courage",   emotion: "Affirmation",  process: "Empowerment",     god_view: "Permitting",   life_view: "Feasible",    description: "The critical level of integrity — the demarcation between positive and negative fields. Courage means doing what needs to be done even when it's difficult. Life is seen as exciting and stimulating. The capacity to cope with and face the problems of life. The engine of all growth." },
+  250: { name: "Neutrality", emotion: "Trust",       process: "Release",         god_view: "Enabling",     life_view: "Satisfactory", description: "Characterized by flexibility, non-judgmental realism, and safety. Not attached to outcomes. Gets along well with others. At this level people become difficult to manipulate, as they are not easily threatened or provoked. Comfortable with the world." },
+  310: { name: "Willingness", emotion: "Optimism",   process: "Intention",       god_view: "Inspiring",    life_view: "Hopeful",     description: "Acts as its own reward. Genuine happiness begins here. Willing to learn, grow, and try new things. Social assets — friendly, reliable, helpful. Able to use and develop innate talents and capacities. Inner compass shifts from self to others." },
+  350: { name: "Acceptance", emotion: "Forgiveness", process: "Transcendence",   god_view: "Merciful",     life_view: "Harmonious",  description: "Life is abundant. No longer victim to life — recognizes that one is the source of one's experience. Long-term goals replace short-term gratification. Characterized by the capacity for genuine forgiveness, not just of others but of oneself. No longer sees others as enemies." },
+  400: { name: "Reason",    emotion: "Understanding", process: "Abstraction",    god_view: "Wise",         life_view: "Meaningful",  description: "The level of science, philosophy, and logic. Able to see the world clearly. Nobel Prize winners, great minds of history. The limitation: reason alone cannot answer questions of ultimate meaning. The intellect itself eventually becomes an obstacle to spiritual progress." },
+  500: { name: "Love",      emotion: "Reverence",    process: "Revelation",      god_view: "Loving",       life_view: "Benign",      description: "Not the conditional love of romance or sentiment, but the unconditional, nurturing, and supportive love that focuses on the good of others. This level is reached by only 0.4% of humanity. Characterized by compassion, care, and spiritual vision. The beginning of true enlightenment." },
+  540: { name: "Joy",       emotion: "Serenity",     process: "Transfiguration", god_view: "Joyful",       life_view: "Complete",    description: "The level of healing and saints. Characterized by a nearness to God, an inner serenity, unconditional love for all life, and a capacity to withstand great suffering without loss of equanimity. Saints and advanced spiritual figures live here. Profound compassion for all beings." },
+  600: { name: "Peace",     emotion: "Bliss",        process: "Illumination",    god_view: "All-Being",    life_view: "Perfect",     description: "Achieved by very few — approximately one in ten million people. Characterized by profound serenity, stillness, and bliss. The world ceases to be experienced in terms of self and other. The experience of the witness — pure awareness perceiving without judgment." },
+  700: { name: "Enlightenment", emotion: "Ineffable", process: "Pure Consciousness", god_view: "Self",    life_view: "Is",          description: "700–1000: The level of the great spiritual masters throughout history — Jesus, Buddha, Krishna, Zoroaster. Consciousness itself becomes the identity. Non-dualistic awareness. A profound influence on all of humanity. The physical body is seen merely as an instrument of consciousness." },
+  1000: { name: "Avatars / Pure Divinity", emotion: "Infinite", process: "Omnipresence", god_view: "God", life_view: "Infinite",  description: "The highest level calibrated — the level of Jesus Christ, Buddha, Krishna, and Zoroaster. Beyond anything the ordinary mind can comprehend. These beings transform the consciousness of humanity by their very presence and their teachings echo through millennia." },
+};
+
+function getLevelDescription(loc) {
+  if (loc > 9999) return LEVEL_DESCRIPTIONS[1000];
+  const levels = Object.keys(LEVEL_DESCRIPTIONS).map(Number).sort((a, b) => a - b);
+  let match = LEVEL_DESCRIPTIONS[levels[0]];
+  for (const l of levels) {
+    if (loc >= l) match = LEVEL_DESCRIPTIONS[l];
+  }
+  return match;
+}
+
+
 export default function HawkinsTable() {
   const [search, setSearch] = useState("");
   const [selectedCats, setSelectedCats] = useState([]);
@@ -4132,6 +4164,8 @@ export default function HawkinsTable() {
   const [showCatPanel, setShowCatPanel] = useState(false);
   const [showAdvanced, setShowAdvanced] = useState(false);
   const [dark, setDark] = useState(true);
+  const [page, setPage] = useState(1);
+  const PAGE_SIZE = 25;
 
   const applyBand = (idx) => {
     setLocBandIdx(idx);
@@ -4190,10 +4224,12 @@ export default function HawkinsTable() {
   const toggleSort = (key) => {
     if (sortKey === key) setSortDir(d => d === "asc" ? "desc" : "asc");
     else { setSortKey(key); setSortDir(key === "name" || key === "category" ? "asc" : "desc"); }
+    setPage(1);
   };
 
   const toggleCat = (cat) => {
     setSelectedCats(prev => prev.includes(cat) ? prev.filter(c => c !== cat) : [...prev, cat]);
+    setPage(1);
   };
 
   const toggleStar = (e, name) => {
@@ -4203,7 +4239,7 @@ export default function HawkinsTable() {
 
   const clearAll = () => {
     setSearch(""); setSelectedCats([]); setSelectedGroup("All");
-    setTruthFilter("All"); applyBand(0); setSourceIdx(0); setStarredOnly(false);
+    setTruthFilter("All"); applyBand(0); setSourceIdx(0); setStarredOnly(false); setPage(1);
   };
 
   const hasFilters = search || selectedCats.length || selectedGroup !== "All" ||
@@ -4231,7 +4267,7 @@ export default function HawkinsTable() {
       background: active ? (danger ? S.activeDanger : S.activeBlue) : S.inputBg,
       border: `1px solid ${active ? (danger ? S.red : S.blue) : S.border}`,
       color: active ? (danger ? S.red : S.activeBlueText) : S.muted,
-      borderRadius: 20, padding: "5px 13px", fontSize: 13, cursor: "pointer",
+      borderRadius: 20, padding: "5px 10px", fontSize: "clamp(11px, 2.5vw, 13px)", cursor: "pointer",
       fontFamily: "Georgia, serif", whiteSpace: "nowrap",
     }}>{children}</button>
   );
@@ -4251,23 +4287,34 @@ export default function HawkinsTable() {
 
   const groups = ["All", ...Object.keys(CATEGORY_GROUPS), "Other"];
 
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const safePage = Math.min(page, totalPages);
+  const paged = filtered.slice((safePage - 1) * PAGE_SIZE, safePage * PAGE_SIZE);
+
   return (
-    <div style={{ fontFamily: "'Georgia', serif", background: S.bg, minHeight: "100vh", color: S.text, padding: "20px 14px" }}>
+    <div style={{ fontFamily: "'Georgia', serif", background: S.bg, minHeight: "100vh", color: S.text, padding: "16px 8px" }}>
+      <style>{`
+        @media (max-width: 600px) {
+          .hide-mobile { display: none !important; }
+          table { font-size: 13px !important; }
+          th, td { padding: 6px 6px !important; }
+        }
+      `}</style>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
 
         {/* HEADER */}
         <div style={{ textAlign: "center", marginBottom: 20 }}>
           <div style={{ fontSize: 12, letterSpacing: 4, color: S.gold, textTransform: "uppercase", marginBottom: 6 }}>Dr. David R. Hawkins</div>
-          <h1 style={{ fontSize: 30, fontWeight: 400, color: S.text, margin: "0 0 4px", letterSpacing: 1 }}>Map of Consciousness</h1>
-          <div style={{ fontSize: 15, color: S.muted }}>Calibration Reference — {DATA.length.toLocaleString()} entries</div>
+          <h1 style={{ fontSize: "clamp(20px, 5vw, 30px)", fontWeight: 400, color: S.text, margin: "0 0 4px", letterSpacing: 1 }}>Map of Consciousness</h1>
+          <div style={{ fontSize: "clamp(13px, 3vw, 15px)", color: S.muted }}>Calibration Reference — {DATA.length.toLocaleString()} entries</div>
         </div>
 
         {/* SEARCH ROW */}
-        <div style={{ display: "flex", gap: 8, marginBottom: 10, flexWrap: "wrap", alignItems: "center" }}>
+        <div style={{ display: "flex", gap: 6, marginBottom: 10, flexWrap: "wrap", alignItems: "center" }}>
           <input
-            value={search} onChange={e => setSearch(e.target.value)}
+            value={search} onChange={e => { setSearch(e.target.value); setPage(1); }}
             placeholder="Search name, description, category…"
-            style={{ flex: "1 1 220px", background: S.card, border: `1px solid ${S.border}`, borderRadius: 8, padding: "9px 13px", color: S.text, fontSize: 15, outline: "none" }}
+            style={{ flex: "1 1 180px", minWidth: 0, background: S.card, border: `1px solid ${S.border}`, borderRadius: 8, padding: "9px 13px", color: S.text, fontSize: 15, outline: "none" }}
           />
           {pill(compact, () => setCompact(v => !v), "Compact")}
           {pill(starredOnly, () => setStarredOnly(v => !v), `★ Starred${Object.values(starred).filter(Boolean).length ? ` (${Object.values(starred).filter(Boolean).length})` : ""}`)}
@@ -4293,27 +4340,27 @@ export default function HawkinsTable() {
             {dark ? "☀" : "☾"}
           </button>
           <div style={{ fontSize: 14, color: S.muted, whiteSpace: "nowrap", marginLeft: "auto" }}>
-            <span style={{ color: stats ? locColor(stats.avg, S) : S.muted }}>{filtered.length}</span> results
+            <span style={{ color: stats ? locColor(stats.avg, S) : S.muted }}>{filtered.length.toLocaleString()}</span> results
           </div>
         </div>
 
         {/* FILTER PANEL */}
         {showAdvanced && <div style={{ background: S.card, border: `1px solid ${S.border}`, borderRadius: 12, padding: "14px 16px", marginBottom: 14 }}>
 
-          <div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center", marginBottom: 12 }}>
+          <div style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center", marginBottom: 12 }}>
             <span style={{ fontSize: 12, color: S.muted, letterSpacing: 1, textTransform: "uppercase", marginRight: 2 }}>Source</span>
-            {SOURCE_OPTIONS.map((s, i) => pill(sourceIdx === i, () => setSourceIdx(i), s.label))}
+            {SOURCE_OPTIONS.map((s, i) => pill(sourceIdx === i, () => { setSourceIdx(i); setPage(1); }, s.label))}
             <div style={{ width: 1, height: 16, background: S.border, margin: "0 4px" }} />
             <span style={{ fontSize: 12, color: S.muted, letterSpacing: 1, textTransform: "uppercase", marginRight: 2 }}>Truth</span>
             {[["All","All"],["True","✓ True"],["False","✗ False"],["Neutral","— Neutral"]].map(([v, l]) =>
-              pill(truthFilter === v, () => setTruthFilter(v), l, v === "False")
+              pill(truthFilter === v, () => { setTruthFilter(v); setPage(1); }, l, v === "False")
             )}
           </div>
 
           <div style={{ marginBottom: 12 }}>
             <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 8 }}>
               <span style={{ fontSize: 12, color: S.muted, letterSpacing: 1, textTransform: "uppercase", alignSelf: "center", marginRight: 2 }}>LOC Band</span>
-              {LOC_BAND_PRESETS.map((b, i) => pill(locBandIdx === i, () => applyBand(i), b.label))}
+              {LOC_BAND_PRESETS.map((b, i) => pill(locBandIdx === i, () => { applyBand(i); setPage(1); }, b.label))}
             </div>
             {locBandIdx === 0 && (
               <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
@@ -4334,7 +4381,7 @@ export default function HawkinsTable() {
           <div>
             <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 8, alignItems: "center" }}>
               <span style={{ fontSize: 12, color: S.muted, letterSpacing: 1, textTransform: "uppercase", marginRight: 2 }}>Group</span>
-              {groups.map(g => pill(selectedGroup === g, () => { setSelectedGroup(g); setSelectedCats([]); }, g))}
+              {groups.map(g => pill(selectedGroup === g, () => { setSelectedGroup(g); setSelectedCats([]); setPage(1); }, g))}
               <button onClick={() => setShowCatPanel(v => !v)} style={{
                 marginLeft: 4, background: showCatPanel ? S.activeBlue : "none",
                 border: `1px solid ${showCatPanel ? S.blue : S.border}`,
@@ -4372,7 +4419,7 @@ export default function HawkinsTable() {
 
         {/* STATS BAR */}
         {showAdvanced && stats && filtered.length > 1 && (
-          <div style={{ display: "flex", gap: 20, marginBottom: 12, flexWrap: "wrap", background: S.card, border: `1px solid ${S.border}`, borderRadius: 8, padding: "10px 18px", fontSize: 14 }}>
+          <div style={{ display: "flex", gap: 20, marginBottom: 12, flexWrap: "wrap", background: S.card, border: `1px solid ${S.border}`, borderRadius: 8, padding: "10px 12px", fontSize: "clamp(12px, 3vw, 14px)" }}>
             <div><span style={{ color: S.muted }}>Entries: </span><span style={{ color: S.text, fontWeight: 600 }}>{stats.total}</span></div>
             <div><span style={{ color: S.muted }}>Avg LOC: </span><span style={{ color: locColor(stats.avg, S), fontWeight: 600 }}>{stats.avg}</span></div>
             <div><span style={{ color: S.muted }}>Highest: </span>
@@ -4402,7 +4449,7 @@ export default function HawkinsTable() {
                 </tr>
               </thead>
               <tbody>
-                {filtered.map((item, i) => {
+                {paged.map((item, i) => {
                   const isExp = expanded === i;
                   const isStarred = starred[item.name];
                   const rowBg = isExp ? S.rowExp : i % 2 === 0 ? S.rowEven : S.rowOdd;
@@ -4419,8 +4466,8 @@ export default function HawkinsTable() {
                           {item.name}
                           <span style={{ marginLeft: 5, color: isExp ? S.gold : S.muted, fontSize: 9 }}>{isExp ? "▲" : "▼"}</span>
                         </td>
-                        <td style={{ padding: p, color: S.muted, fontSize: 13, letterSpacing: 0.2 }}>{item.category}</td>
-                        <td style={{ padding: p, textAlign: "right", fontWeight: 700, color: locColor(item.loc, S), fontFamily: "monospace", fontSize: compact ? 14 : 16, whiteSpace: "nowrap" }}>
+                        <td style={{ padding: p, color: S.muted, fontSize: 13, letterSpacing: 0.2, display: "none", maxWidth: 0 }} className="hide-mobile">{item.category}</td>
+                        <td style={{ padding: p, textAlign: "right", fontWeight: 700, color: locColor(item.loc, S), fontFamily: "monospace", fontSize: compact ? 14 : "clamp(13px, 3vw, 16px)", whiteSpace: "nowrap" }}>
                           {item.locDisplay}
                         </td>
                         {!compact && (
@@ -4439,11 +4486,31 @@ export default function HawkinsTable() {
                       </tr>
                       {isExp && (
                         <tr key={"exp" + i} style={{ background: S.rowExpDesc }}>
-                          <td colSpan={compact ? 5 : 7} style={{ padding: "10px 18px 12px 40px", color: S.text, fontSize: 14, fontStyle: "italic", borderBottom: `2px solid ${S.gold}20` }}>
-                            {item.description}
-                            {item.dateContext && (
-                              <span style={{ marginLeft: 10, color: S.muted, fontStyle: "normal", fontSize: 12, opacity: 0.85 }}>— {item.dateContext}</span>
-                            )}
+                          <td colSpan={compact ? 5 : 7} style={{ padding: "12px 18px 14px 40px", borderBottom: `2px solid ${S.gold}20` }}>
+                            {/* Entry description */}
+                            <div style={{ color: S.text, fontSize: 14, fontStyle: "italic", marginBottom: 10 }}>
+                              {item.description}
+                              {item.dateContext && (
+                                <span style={{ marginLeft: 10, color: S.muted, fontStyle: "normal", fontSize: 12, opacity: 0.85 }}>— {item.dateContext}</span>
+                              )}
+                            </div>
+                            {/* Level band description */}
+                            {(() => {
+                              const ld = getLevelDescription(item.loc);
+                              if (!ld) return null;
+                              return (
+                                <div style={{ background: dark ? "#0a0f1a" : S.faint, border: `1px solid ${S.border}`, borderRadius: 8, padding: "10px 14px", marginTop: 4 }}>
+                                  <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 6, alignItems: "baseline" }}>
+                                    <span style={{ color: locColor(item.loc, S), fontWeight: 700, fontSize: 15, fontStyle: "normal" }}>{ld.name}</span>
+                                    <span style={{ color: S.muted, fontSize: 12, fontStyle: "normal" }}>Emotion: <span style={{ color: S.text }}>{ld.emotion}</span></span>
+                                    <span style={{ color: S.muted, fontSize: 12, fontStyle: "normal" }}>Process: <span style={{ color: S.text }}>{ld.process}</span></span>
+                                    <span style={{ color: S.muted, fontSize: 12, fontStyle: "normal" }}>God-view: <span style={{ color: S.text }}>{ld.god_view}</span></span>
+                                    <span style={{ color: S.muted, fontSize: 12, fontStyle: "normal" }}>Life-view: <span style={{ color: S.text }}>{ld.life_view}</span></span>
+                                  </div>
+                                  <div style={{ color: S.muted, fontSize: 13, fontStyle: "normal", lineHeight: 1.5 }}>{ld.description}</div>
+                                </div>
+                              );
+                            })()}
                           </td>
                         </tr>
                       )}
@@ -4461,6 +4528,32 @@ export default function HawkinsTable() {
             </table>
           </div>
         </div>
+
+        {/* PAGINATION */}
+        {totalPages > 1 && (
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginTop: 14, flexWrap: "wrap" }}>
+            <button onClick={() => setPage(1)} disabled={safePage === 1}
+              style={{ background: S.card, border: `1px solid ${S.border}`, color: safePage === 1 ? S.faint : S.muted, borderRadius: 8, padding: "7px 12px", fontSize: 14, cursor: safePage === 1 ? "default" : "pointer" }}>
+              ««
+            </button>
+            <button onClick={() => setPage(p => Math.max(1, p - 1))} disabled={safePage === 1}
+              style={{ background: S.card, border: `1px solid ${S.border}`, color: safePage === 1 ? S.faint : S.muted, borderRadius: 8, padding: "7px 14px", fontSize: 14, cursor: safePage === 1 ? "default" : "pointer" }}>
+              ‹ Prev
+            </button>
+            <span style={{ fontSize: 14, color: S.muted, padding: "0 6px" }}>
+              Page <span style={{ color: S.text, fontWeight: 600 }}>{safePage}</span> of <span style={{ color: S.text, fontWeight: 600 }}>{totalPages}</span>
+              <span style={{ color: S.muted, fontSize: 12 }}> ({((safePage-1)*PAGE_SIZE+1).toLocaleString()}–{Math.min(safePage*PAGE_SIZE, filtered.length).toLocaleString()} of {filtered.length.toLocaleString()})</span>
+            </span>
+            <button onClick={() => setPage(p => Math.min(totalPages, p + 1))} disabled={safePage === totalPages}
+              style={{ background: S.card, border: `1px solid ${S.border}`, color: safePage === totalPages ? S.faint : S.muted, borderRadius: 8, padding: "7px 14px", fontSize: 14, cursor: safePage === totalPages ? "default" : "pointer" }}>
+              Next ›
+            </button>
+            <button onClick={() => setPage(totalPages)} disabled={safePage === totalPages}
+              style={{ background: S.card, border: `1px solid ${S.border}`, color: safePage === totalPages ? S.faint : S.muted, borderRadius: 8, padding: "7px 12px", fontSize: 14, cursor: safePage === totalPages ? "default" : "pointer" }}>
+              »»
+            </button>
+          </div>
+        )}
 
         {/* LEGEND */}
         <div style={{ display: "flex", gap: 20, marginTop: 14, flexWrap: "wrap", justifyContent: "center" }}>
