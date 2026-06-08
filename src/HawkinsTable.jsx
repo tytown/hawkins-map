@@ -4164,6 +4164,7 @@ export default function HawkinsTable() {
   const [showCatPanel, setShowCatPanel] = useState(false);
   const [showAdvanced, setShowAdvanced] = useState(false);
   const [showLevelsMap, setShowLevelsMap] = useState(false);
+  const [countriesOnly, setCountriesOnly] = useState(false);
   const [dark, setDark] = useState(true);
   const [page, setPage] = useState(1);
   const PAGE_SIZE = 25;
@@ -4192,6 +4193,7 @@ export default function HawkinsTable() {
       const haystacks = [item.name.toLowerCase(), (item.description || "").toLowerCase(), item.category.toLowerCase()];
       const matchSearch = !search || haystacks.some(h => h.includes(q) || h.includes(qAlt));
       const matchCat = selectedCats.length === 0 || selectedCats.includes(item.category);
+      const matchCountries = !countriesOnly || item.category === "Countries & Regions";
       const matchGroup = selectedGroup === "All" || groupForCategory(item.category) === selectedGroup;
       const matchTruth = truthFilter === "All" ||
         (truthFilter === "True" && item.trueOrPositive === true) ||
@@ -4199,7 +4201,7 @@ export default function HawkinsTable() {
         (truthFilter === "Neutral" && item.trueOrPositive === null);
       const matchLoc = item.loc >= effectiveMin && item.loc <= effectiveMax;
       const matchSrc = srcFn(item);
-      return matchSearch && matchCat && matchGroup && matchTruth && matchLoc && matchSrc;
+      return matchSearch && matchCat && matchCountries && matchGroup && matchTruth && matchLoc && matchSrc;
     });
     d.sort((a, b) => {
       let av = a[sortKey], bv = b[sortKey];
@@ -4214,7 +4216,7 @@ export default function HawkinsTable() {
       return sortDir === "asc" ? av - bv : bv - av;
     });
     return d;
-  }, [search, selectedCats, selectedGroup, truthFilter, effectiveMin, effectiveMax, sourceIdx, sortKey, sortDir, starredOnly, starred]);
+  }, [search, selectedCats, selectedGroup, truthFilter, effectiveMin, effectiveMax, sourceIdx, sortKey, sortDir, starredOnly, starred, countriesOnly]);
 
   const stats = useMemo(() => {
     const finite = filtered.filter(d => d.loc < 9999);
@@ -4244,11 +4246,11 @@ export default function HawkinsTable() {
 
   const clearAll = () => {
     setSelectedCats([]); setSelectedGroup("All");
-    setTruthFilter("All"); applyBand(0); setSourceIdx(0); setStarredOnly(false); setPage(1);
+    setTruthFilter("All"); applyBand(0); setSourceIdx(0); setStarredOnly(false); setCountriesOnly(false); setPage(1);
   };
 
   const hasFilters = selectedCats.length || selectedGroup !== "All" ||
-    truthFilter !== "All" || locBandIdx !== 0 || sourceIdx !== 0 || starredOnly;
+    truthFilter !== "All" || locBandIdx !== 0 || sourceIdx !== 0 || starredOnly || countriesOnly;
 
   // WCAG AA-compliant theme tokens
   const S = dark ? {
@@ -4337,6 +4339,7 @@ export default function HawkinsTable() {
             )}
           </div>
           {pill(compact, () => setCompact(v => !v), "Compact")}
+          {pill(countriesOnly, () => { setCountriesOnly(v => !v); setPage(1); }, "🌍 Countries")}
           {pill(starredOnly, () => setStarredOnly(v => !v), `★ Starred${Object.values(starred).filter(Boolean).length ? ` (${Object.values(starred).filter(Boolean).length})` : ""}`)}
           {hasFilters && (
             <button onClick={clearAll} style={{ background: "none", border: `1px solid ${S.red}`, color: S.red, borderRadius: 20, padding: "5px 13px", fontSize: 13, cursor: "pointer" }}>
