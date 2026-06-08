@@ -4238,11 +4238,11 @@ export default function HawkinsTable() {
   };
 
   const clearAll = () => {
-    setSearch(""); setSelectedCats([]); setSelectedGroup("All");
+    setSelectedCats([]); setSelectedGroup("All");
     setTruthFilter("All"); applyBand(0); setSourceIdx(0); setStarredOnly(false); setPage(1);
   };
 
-  const hasFilters = search || selectedCats.length || selectedGroup !== "All" ||
+  const hasFilters = selectedCats.length || selectedGroup !== "All" ||
     truthFilter !== "All" || locBandIdx !== 0 || sourceIdx !== 0 || starredOnly;
 
   // WCAG AA-compliant theme tokens
@@ -4311,16 +4311,31 @@ export default function HawkinsTable() {
 
         {/* SEARCH ROW */}
         <div style={{ display: "flex", gap: 6, marginBottom: 10, flexWrap: "wrap", alignItems: "center" }}>
-          <input
-            value={search} onChange={e => { setSearch(e.target.value); setPage(1); }}
-            placeholder="Search name, description, category…"
-            style={{ flex: "1 1 180px", minWidth: 0, background: S.card, border: `1px solid ${S.border}`, borderRadius: 8, padding: "9px 13px", color: S.text, fontSize: 15, outline: "none" }}
-          />
+          <div style={{ position: "relative", flex: "1 1 180px", minWidth: 0, display: "flex" }}>
+            <input
+              value={search} onChange={e => { setSearch(e.target.value); setPage(1); }}
+              placeholder="Search name, description, category…"
+              style={{ flex: 1, minWidth: 0, background: S.card, border: `1px solid ${S.border}`, borderRadius: 8, padding: "9px 34px 9px 13px", color: S.text, fontSize: 15, outline: "none" }}
+            />
+            {search && (
+              <button
+                onClick={() => { setSearch(""); setPage(1); }}
+                title="Clear search"
+                style={{
+                  position: "absolute", right: 6, top: "50%", transform: "translateY(-50%)",
+                  background: "none", border: "none", color: S.muted, cursor: "pointer",
+                  fontSize: 16, lineHeight: 1, padding: "4px 8px", borderRadius: 4,
+                }}
+              >
+                ✕
+              </button>
+            )}
+          </div>
           {pill(compact, () => setCompact(v => !v), "Compact")}
           {pill(starredOnly, () => setStarredOnly(v => !v), `★ Starred${Object.values(starred).filter(Boolean).length ? ` (${Object.values(starred).filter(Boolean).length})` : ""}`)}
           {hasFilters && (
             <button onClick={clearAll} style={{ background: "none", border: `1px solid ${S.red}`, color: S.red, borderRadius: 20, padding: "5px 13px", fontSize: 13, cursor: "pointer" }}>
-              ✕ Clear all
+              ✕ Clear filters
             </button>
           )}
           <button onClick={() => setShowAdvanced(v => !v)} style={{
