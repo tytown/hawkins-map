@@ -4089,6 +4089,72 @@ function groupForCategory(cat) {
   return "Other";
 }
 
+// Allowlist of entries in "Countries & Regions" that are actual sovereign countries
+// (or country-like polities such as Hong Kong, Palestine, Puerto Rico).
+// Excludes US states, cities, sub-national regions, multi-country regions,
+// historical civilizations, events, and institutional aspects (e.g. "China (President)").
+const COUNTRY_NAMES = new Set([
+  "Algeria", "Algeria (country)",
+  "Angola", "Angola (country)",
+  "Argentina", "Argentina (country)",
+  "Australia",
+  "Bolivia", "Bolivia (country)",
+  "Bosnia", "Bosnia (country)",
+  "Brazil", "Brazil (country)",
+  "Burma", "Burma (country)",
+  "Canada",
+  "China (Republic of)",
+  "Congo", "Congo (country)",
+  "Cuba", "Cuba (country)",
+  "Egypt", "Egypt (country)", "Egypt (Middle East)",
+  "France",
+  "Germany",
+  "Greece",
+  "Haiti", "Haiti (country)",
+  "Hong Kong",
+  "Iceland", "Iceland (country)",
+  "India",
+  "Indonesia", "Indonesia (country)",
+  "Iran", "Iran (country)", "Iran (Middle East)",
+  "Iraq", "Iraq (country)", "Iraq (Middle East)",
+  "Ireland",
+  "Israel", "Israel (country)", "Israel (Middle East)",
+  "Italy",
+  "Japan",
+  "Jordan", "Jordan (Middle East)",
+  "Kuwait", "Kuwait (country)", "Kuwait (Middle East)",
+  "Lebanon", "Lebanon (country)", "Lebanon (Middle East)",
+  "Libya", "Libya (country)",
+  "Mexico",
+  "Nepal", "Nepal (country)",
+  "Netherlands",
+  "New Guinea", "New Guinea (country)",
+  "Nigeria", "Nigeria (country)",
+  "North Korea",
+  "Oman", "Oman (country)",
+  "Pakistan", "Pakistan (country)",
+  "Palestine", "Palestine (territories)", "Palestine (country/territory)",
+  "Puerto Rico",
+  "Russia",
+  "Rwanda", "Rwanda (country)",
+  "Saudi Arabia", "Saudi Arabia (country)",
+  "Singapore",
+  "South Africa",
+  "South Korea",
+  "Sudan", "Sudan (country)",
+  "Switzerland",
+  "Syria", "Syria (country)",
+  "Taiwan", "Taiwan (country)",
+  "Turkey", "Turkey (country)",
+  "Turkmenistan", "Turkmenistan (country)",
+  "UAE (United Arab Emirates)",
+  "Uganda", "Uganda (country)",
+  "Ukraine", "Ukraine (country)",
+  "United States (overall)",
+  "Vietnam", "Vietnam (country)",
+  "Yemen", "Yemen (country)",
+]);
+
 function TruthBadge({ val, S }) {
   if (val === true) return <span style={{ color: S.green, fontWeight: 700, fontSize: 14, letterSpacing: 1 }}>✓ TRUE</span>;
   if (val === false) return <span style={{ color: S.red, fontWeight: 700, fontSize: 14, letterSpacing: 1 }}>✗ FALSE</span>;
@@ -4193,7 +4259,7 @@ export default function HawkinsTable() {
       const haystacks = [item.name.toLowerCase(), (item.description || "").toLowerCase(), item.category.toLowerCase()];
       const matchSearch = !search || haystacks.some(h => h.includes(q) || h.includes(qAlt));
       const matchCat = selectedCats.length === 0 || selectedCats.includes(item.category);
-      const matchCountries = !countriesOnly || item.category === "Countries & Regions";
+      const matchCountries = !countriesOnly || COUNTRY_NAMES.has(item.name);
       const matchGroup = selectedGroup === "All" || groupForCategory(item.category) === selectedGroup;
       const matchTruth = truthFilter === "All" ||
         (truthFilter === "True" && item.trueOrPositive === true) ||
