@@ -4360,61 +4360,69 @@ export default function HawkinsTable() {
           </div>
         </div>
 
-        {/* LEVELS-OF-CONSCIOUSNESS MAP CTA */}
-        <div style={{ marginBottom: 10 }}>
+        {/* LEVELS-OF-CONSCIOUSNESS MAP CTA + PANEL (single container) */}
+        <div style={{
+          marginBottom: 14,
+          background: S.card,
+          border: `1px solid ${S.gold}`,
+          borderRadius: 12,
+          overflow: "hidden",
+          boxShadow: showLevelsMap ? `0 0 0 1px ${S.gold}33` : "none",
+        }}>
           <button
             onClick={() => setShowLevelsMap(v => !v)}
             style={{
               width: "100%", textAlign: "left",
-              background: showLevelsMap ? S.activeBlue : S.card,
-              border: `1px solid ${showLevelsMap ? S.blue : S.border}`,
-              color: showLevelsMap ? S.activeBlueText : S.text,
-              borderRadius: 10, padding: "10px 14px", fontSize: 14, cursor: "pointer",
+              background: "transparent",
+              border: "none",
+              borderBottom: showLevelsMap ? `1px solid ${S.gold}55` : "none",
+              color: S.text,
+              padding: "12px 16px", fontSize: 14, cursor: "pointer",
               fontFamily: "Georgia, serif", display: "flex", alignItems: "center", gap: 8,
             }}
           >
             <span style={{ color: S.gold, fontSize: 16 }}>◈</span>
-            <span style={{ fontWeight: 600 }}>Map of the Levels of Consciousness</span>
+            <span style={{ fontWeight: 600, color: S.gold }}>Map of the Levels of Consciousness</span>
             <span style={{ color: S.muted, fontSize: 12 }} className="hide-mobile">— Hawkins' calibrated scale from Shame (20) to Enlightenment (1000)</span>
-            <span style={{ marginLeft: "auto", color: S.muted }}>{showLevelsMap ? "▲" : "▼"}</span>
+            <span style={{ marginLeft: "auto", color: S.gold }}>{showLevelsMap ? "▲" : "▼"}</span>
           </button>
-        </div>
 
-        {showLevelsMap && (
-          <div style={{ background: S.card, border: `1px solid ${S.border}`, borderRadius: 12, padding: "8px 0", marginBottom: 14, overflowX: "auto" }}>
-            <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
-              <thead>
-                <tr style={{ background: S.theadBg, color: S.muted, textTransform: "uppercase", fontSize: 11, letterSpacing: 1 }}>
-                  <th style={{ padding: "8px 10px", textAlign: "right" }}>LOC</th>
-                  <th style={{ padding: "8px 10px", textAlign: "left" }}>Level</th>
-                  <th style={{ padding: "8px 10px", textAlign: "left" }}>Emotion</th>
-                  <th style={{ padding: "8px 10px", textAlign: "left" }}>Process</th>
-                  <th style={{ padding: "8px 10px", textAlign: "left" }}>View of Life</th>
-                  <th style={{ padding: "8px 10px", textAlign: "left" }} className="hide-mobile">View of God</th>
-                </tr>
-              </thead>
-              <tbody>
-                {Object.keys(LEVEL_DESCRIPTIONS).map(Number).sort((a, b) => b - a).map((loc, i) => {
-                  const l = LEVEL_DESCRIPTIONS[loc];
-                  const color = locColor(loc, S);
-                  return (
-                    <tr key={loc} style={{ background: i % 2 ? S.rowOdd : S.rowEven, borderTop: `1px solid ${S.border}` }}>
-                      <td style={{ padding: "8px 10px", textAlign: "right", fontWeight: 700, color, fontFamily: "monospace", whiteSpace: "nowrap" }}>{loc}</td>
-                      <td style={{ padding: "8px 10px", color, fontWeight: 600, whiteSpace: "nowrap" }}>{l.name}</td>
-                      <td style={{ padding: "8px 10px", color: S.text }}>{l.emotion}</td>
-                      <td style={{ padding: "8px 10px", color: S.text }}>{l.process}</td>
-                      <td style={{ padding: "8px 10px", color: S.text }}>{l.life_view}</td>
-                      <td style={{ padding: "8px 10px", color: S.muted }} className="hide-mobile">{l.god_view}</td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-            <div style={{ padding: "10px 14px", fontSize: 12, color: S.muted, borderTop: `1px solid ${S.border}` }}>
-              The scale is logarithmic — each level represents an exponential leap in consciousness energy. 200 is the threshold of integrity; below it is destructive, above is constructive.
+          {showLevelsMap && (
+            <div style={{ overflowX: "auto" }}>
+              <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
+                <thead>
+                  <tr style={{ background: S.theadBg, color: S.muted, textTransform: "uppercase", fontSize: 11, letterSpacing: 1 }}>
+                    <th style={{ padding: "8px 10px", textAlign: "right" }}>LOC</th>
+                    <th style={{ padding: "8px 10px", textAlign: "left" }}>Level</th>
+                    <th style={{ padding: "8px 10px", textAlign: "left" }}>Emotion</th>
+                    <th style={{ padding: "8px 10px", textAlign: "left" }}>Process</th>
+                    <th style={{ padding: "8px 10px", textAlign: "left" }}>View of Life</th>
+                    <th style={{ padding: "8px 10px", textAlign: "left" }} className="hide-mobile">View of God</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {Object.keys(LEVEL_DESCRIPTIONS).map(Number).sort((a, b) => b - a).map((loc, i) => {
+                    const l = LEVEL_DESCRIPTIONS[loc];
+                    const color = locColor(loc, S);
+                    return (
+                      <tr key={loc} style={{ background: i % 2 ? S.rowOdd : S.rowEven, borderTop: `1px solid ${S.border}` }}>
+                        <td style={{ padding: "8px 10px", textAlign: "right", fontWeight: 700, color, fontFamily: "monospace", whiteSpace: "nowrap" }}>{loc}</td>
+                        <td style={{ padding: "8px 10px", color, fontWeight: 600, whiteSpace: "nowrap" }}>{l.name}</td>
+                        <td style={{ padding: "8px 10px", color: S.text }}>{l.emotion}</td>
+                        <td style={{ padding: "8px 10px", color: S.text }}>{l.process}</td>
+                        <td style={{ padding: "8px 10px", color: S.text }}>{l.life_view}</td>
+                        <td style={{ padding: "8px 10px", color: S.muted }} className="hide-mobile">{l.god_view}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+              <div style={{ padding: "10px 14px", fontSize: 12, color: S.muted, borderTop: `1px solid ${S.gold}55`, fontStyle: "italic" }}>
+                The scale is logarithmic — each level represents an exponential leap in consciousness energy. 200 is the threshold of integrity; below it is destructive, above is constructive.
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
 
         {/* FILTER PANEL */}
         {showAdvanced && <div style={{ background: S.card, border: `1px solid ${S.border}`, borderRadius: 12, padding: "14px 16px", marginBottom: 14 }}>
