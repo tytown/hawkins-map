@@ -4182,11 +4182,15 @@ export default function HawkinsTable() {
     const srcFn = SOURCE_OPTIONS[sourceIdx].fn;
     let d = DATA.filter(item => {
       if (starredOnly && !starred[item.name]) return false;
-      const q = search.toLowerCase();
-      const matchSearch = !search ||
-        item.name.toLowerCase().includes(q) ||
-        (item.description && item.description.toLowerCase().includes(q)) ||
-        item.category.toLowerCase().includes(q);
+      const q = search.toLowerCase().trim();
+      let qAlt = null;
+      if (q.endsWith("ies") && q.length > 4) qAlt = q.slice(0, -3) + "y";
+      else if (q.endsWith("y") && q.length > 2) qAlt = q.slice(0, -1) + "ies";
+      else if (q.endsWith("es") && q.length > 3) qAlt = q.slice(0, -2);
+      else if (q.endsWith("s") && q.length > 2) qAlt = q.slice(0, -1);
+      else qAlt = q + "s";
+      const haystacks = [item.name.toLowerCase(), (item.description || "").toLowerCase(), item.category.toLowerCase()];
+      const matchSearch = !search || haystacks.some(h => h.includes(q) || h.includes(qAlt));
       const matchCat = selectedCats.length === 0 || selectedCats.includes(item.category);
       const matchGroup = selectedGroup === "All" || groupForCategory(item.category) === selectedGroup;
       const matchTruth = truthFilter === "All" ||
