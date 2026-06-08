@@ -4233,7 +4233,7 @@ export default function HawkinsTable() {
   const [countriesOnly, setCountriesOnly] = useState(false);
   const [dark, setDark] = useState(true);
   const [page, setPage] = useState(1);
-  const PAGE_SIZE = 25;
+  const [pageSize, setPageSize] = useState(25);
 
   const applyBand = (idx) => {
     setLocBandIdx(idx);
@@ -4360,9 +4360,9 @@ export default function HawkinsTable() {
 
   const groups = ["All", ...Object.keys(CATEGORY_GROUPS), "Other"];
 
-  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const totalPages = Math.max(1, Math.ceil(filtered.length / pageSize));
   const safePage = Math.min(page, totalPages);
-  const paged = filtered.slice((safePage - 1) * PAGE_SIZE, safePage * PAGE_SIZE);
+  const paged = filtered.slice((safePage - 1) * pageSize, safePage * pageSize);
 
   return (
     <div style={{ fontFamily: "'Georgia', serif", background: S.bg, minHeight: "100vh", color: S.text, padding: "16px 8px" }}>
@@ -4405,7 +4405,6 @@ export default function HawkinsTable() {
             )}
           </div>
           {pill(compact, () => setCompact(v => !v), "Compact")}
-          {pill(countriesOnly, () => { setCountriesOnly(v => !v); setPage(1); }, "🌍 Countries")}
           {pill(starredOnly, () => setStarredOnly(v => !v), `★ Starred${Object.values(starred).filter(Boolean).length ? ` (${Object.values(starred).filter(Boolean).length})` : ""}`)}
           {hasFilters && (
             <button onClick={clearAll} style={{ background: "none", border: `1px solid ${S.red}`, color: S.red, borderRadius: 20, padding: "5px 13px", fontSize: 13, cursor: "pointer" }}>
@@ -4508,6 +4507,9 @@ export default function HawkinsTable() {
             {[["All","All"],["True","✓ True"],["False","✗ False"],["Neutral","— Neutral"]].map(([v, l]) =>
               pill(truthFilter === v, () => { setTruthFilter(v); setPage(1); }, l, v === "False")
             )}
+            <div style={{ width: 1, height: 16, background: S.border, margin: "0 4px" }} />
+            <span style={{ fontSize: 12, color: S.muted, letterSpacing: 1, textTransform: "uppercase", marginRight: 2 }}>Quick</span>
+            {pill(countriesOnly, () => { setCountriesOnly(v => !v); setPage(1); }, "🌍 Countries only")}
           </div>
 
           <div style={{ marginBottom: 12 }}>
@@ -4695,7 +4697,7 @@ export default function HawkinsTable() {
             </button>
             <span style={{ fontSize: 14, color: S.muted, padding: "0 6px" }}>
               Page <span style={{ color: S.text, fontWeight: 600 }}>{safePage}</span> of <span style={{ color: S.text, fontWeight: 600 }}>{totalPages}</span>
-              <span style={{ color: S.muted, fontSize: 12 }}> ({((safePage-1)*PAGE_SIZE+1).toLocaleString()}–{Math.min(safePage*PAGE_SIZE, filtered.length).toLocaleString()} of {filtered.length.toLocaleString()})</span>
+              <span style={{ color: S.muted, fontSize: 12 }}> ({((safePage-1)*pageSize+1).toLocaleString()}–{Math.min(safePage*pageSize, filtered.length).toLocaleString()} of {filtered.length.toLocaleString()})</span>
             </span>
             <button onClick={() => setPage(p => Math.min(totalPages, p + 1))} disabled={safePage === totalPages}
               style={{ background: S.card, border: `1px solid ${S.border}`, color: safePage === totalPages ? S.faint : S.muted, borderRadius: 8, padding: "7px 14px", fontSize: 14, cursor: safePage === totalPages ? "default" : "pointer" }}>
@@ -4707,6 +4709,24 @@ export default function HawkinsTable() {
             </button>
           </div>
         )}
+
+        {/* PAGE SIZE SELECTOR */}
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 6, marginTop: 10, flexWrap: "wrap", fontSize: 13, color: S.muted }}>
+          <span>Show</span>
+          {[25, 50, 100, 200].map(n => (
+            <button key={n} onClick={() => { setPageSize(n); setPage(1); }}
+              style={{
+                background: pageSize === n ? S.activeBlue : S.card,
+                border: `1px solid ${pageSize === n ? S.blue : S.border}`,
+                color: pageSize === n ? S.activeBlueText : S.muted,
+                borderRadius: 6, padding: "4px 10px", fontSize: 13, cursor: "pointer",
+                fontFamily: "Georgia, serif", minWidth: 40,
+              }}>
+              {n}
+            </button>
+          ))}
+          <span>per page</span>
+        </div>
 
         {/* LEGEND */}
         <div style={{ display: "flex", gap: 20, marginTop: 14, flexWrap: "wrap", justifyContent: "center" }}>
