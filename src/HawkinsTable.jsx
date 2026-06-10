@@ -4158,18 +4158,19 @@ const COUNTRY_NAMES = new Set([
 ]);
 
 function TruthBadge({ val, S }) {
-  if (val === true) return <span style={{ color: S.green, fontWeight: 700, fontSize: 14, letterSpacing: 1 }}>✓ TRUE</span>;
-  if (val === false) return <span style={{ color: S.red, fontWeight: 700, fontSize: 14, letterSpacing: 1 }}>✗ FALSE</span>;
+  const base = { display: "inline-flex", alignItems: "center", gap: 4, fontWeight: 600, fontSize: 11, letterSpacing: 0.5, padding: "3px 9px", borderRadius: 999, whiteSpace: "nowrap" };
+  if (val === true) return <span style={{ ...base, color: S.green, background: `${S.green}1f`, border: `1px solid ${S.green}33` }}>✓ TRUE</span>;
+  if (val === false) return <span style={{ ...base, color: S.red, background: `${S.red}1f`, border: `1px solid ${S.red}33` }}>✗ FALSE</span>;
   return <span style={{ color: S.muted, fontSize: 14 }}>—</span>;
 }
 
 function LOCBar({ loc, S }) {
-  if (loc > 9999) return <div style={{ height: 5, background: `linear-gradient(90deg,${S.gold},${S.gold}44)`, borderRadius: 3, width: "100%" }} />;
+  if (loc > 9999) return <div style={{ height: 6, background: `linear-gradient(90deg,${S.gold},${S.gold}44)`, borderRadius: 99, width: "100%" }} />;
   const pct = Math.min(100, (loc / 1000) * 100);
   const color = loc >= 700 ? S.gold : loc >= 500 ? S.green : loc >= 200 ? S.blue : S.red;
   return (
-    <div style={{ background: S.faint, borderRadius: 3, height: 5, width: "100%", overflow: "hidden" }}>
-      <div style={{ height: "100%", width: `${pct}%`, background: color, borderRadius: 3 }} />
+    <div style={{ background: S.faint, borderRadius: 99, height: 6, width: "100%", overflow: "hidden" }}>
+      <div style={{ height: "100%", width: `${pct}%`, background: `linear-gradient(90deg, ${color}99, ${color})`, borderRadius: 99, boxShadow: `0 0 8px ${color}66` }} />
     </div>
   );
 }
@@ -4322,28 +4323,36 @@ export default function HawkinsTable() {
 
   // WCAG AA-compliant theme tokens
   const S = dark ? {
-    bg: "#060b14", card: "#0d1421", border: "#1e293b",
-    text: "#e2e8f0", muted: "#94a3b4", faint: "#1e293b",
-    gold: "#ffd700", green: "#4ade80", blue: "#60a5fa", red: "#f87171",
-    inputBg: "#060b14", rowEven: "#0d1421", rowOdd: "#0a0f1a", rowExp: "#111827", rowExpDesc: "#0f1929",
-    activeBlue: "#1e3a5f", activeBlueText: "#93c5fd", activeDanger: "#7f1d1d",
-    theadBg: "#0a0f1a",
+    bg: "#05060a", card: "rgba(20,24,38,0.72)", border: "rgba(148,163,184,0.14)",
+    text: "#edf0f7", muted: "#9aa5bd", faint: "rgba(148,163,184,0.12)",
+    gold: "#fcd34d", green: "#4ade80", blue: "#7dd3fc", red: "#fb7185",
+    inputBg: "rgba(13,16,28,0.6)", rowEven: "transparent", rowOdd: "rgba(148,163,184,0.035)", rowExp: "rgba(252,211,77,0.06)", rowExpDesc: "rgba(13,16,28,0.5)",
+    activeBlue: "rgba(56,130,246,0.18)", activeBlueText: "#bfdbfe", activeDanger: "rgba(244,63,94,0.16)",
+    theadBg: "rgba(13,16,28,0.55)",
+    glass: "rgba(20,24,38,0.6)", glassBorder: "rgba(255,255,255,0.08)",
+    shadow: "0 8px 32px rgba(0,0,0,0.45)", shadowLg: "0 24px 64px -16px rgba(0,0,0,0.7)",
+    grad: "linear-gradient(135deg,#fcd34d,#fb923c)", gradText: "linear-gradient(135deg,#fde68a 0%,#fcd34d 45%,#fb923c 100%)",
+    halo: "radial-gradient(60% 60% at 50% 0%, rgba(252,211,77,0.10) 0%, rgba(5,6,10,0) 70%)",
   } : {
-    bg: "#f5f3ee", card: "#ffffff", border: "#c9bfb0",
-    text: "#1a1209", muted: "#5a4a35", faint: "#e8dfd4",
-    gold: "#8a6600", green: "#166534", blue: "#1d4ed8", red: "#991b1b",
-    inputBg: "#ffffff", rowEven: "#ffffff", rowOdd: "#faf7f3", rowExp: "#f0ebe3", rowExpDesc: "#f7f3ed",
-    activeBlue: "#dbeafe", activeBlueText: "#1e40af", activeDanger: "#fee2e2",
-    theadBg: "#f5f3ee",
+    bg: "#f4f1ea", card: "rgba(255,255,255,0.72)", border: "rgba(120,100,70,0.18)",
+    text: "#1a1409", muted: "#6b5a40", faint: "rgba(120,100,70,0.12)",
+    gold: "#a06a00", green: "#15803d", blue: "#1d4ed8", red: "#be123c",
+    inputBg: "rgba(255,255,255,0.7)", rowEven: "transparent", rowOdd: "rgba(120,100,70,0.04)", rowExp: "rgba(160,106,0,0.08)", rowExpDesc: "rgba(247,243,237,0.7)",
+    activeBlue: "rgba(29,78,216,0.12)", activeBlueText: "#1e40af", activeDanger: "rgba(190,18,60,0.1)",
+    theadBg: "rgba(247,243,237,0.7)",
+    glass: "rgba(255,255,255,0.6)", glassBorder: "rgba(255,255,255,0.6)",
+    shadow: "0 8px 32px rgba(120,100,70,0.12)", shadowLg: "0 24px 64px -16px rgba(120,100,70,0.22)",
+    grad: "linear-gradient(135deg,#b8860b,#c2410c)", gradText: "linear-gradient(135deg,#a16207 0%,#b8860b 45%,#c2410c 100%)",
+    halo: "radial-gradient(60% 60% at 50% 0%, rgba(160,106,0,0.10) 0%, rgba(244,241,234,0) 70%)",
   };
 
   const pill = (active, onClick, children, danger) => (
-    <button onClick={onClick} style={{
+    <button onClick={onClick} className="glass-card" style={{
       background: active ? (danger ? S.activeDanger : S.activeBlue) : S.inputBg,
-      border: `1px solid ${active ? (danger ? S.red : S.blue) : S.border}`,
-      color: active ? (danger ? S.red : S.activeBlueText) : S.muted,
-      borderRadius: 20, padding: "5px 10px", fontSize: "clamp(11px, 2.5vw, 13px)", cursor: "pointer",
-      fontFamily: "Georgia, serif", whiteSpace: "nowrap",
+      border: `1px solid ${active ? (danger ? S.red : S.gold) : S.border}`,
+      color: active ? (danger ? S.red : S.gold) : S.muted,
+      borderRadius: 999, padding: "8px 15px", fontSize: "clamp(11px, 2.5vw, 13px)", fontWeight: 500, cursor: "pointer",
+      fontFamily: "inherit", whiteSpace: "nowrap",
     }}>{children}</button>
   );
 
@@ -4367,39 +4376,99 @@ export default function HawkinsTable() {
   const paged = filtered.slice((safePage - 1) * pageSize, safePage * pageSize);
 
   return (
-    <div style={{ fontFamily: "'Georgia', serif", background: S.bg, minHeight: "100vh", color: S.text, padding: "16px 8px" }}>
+    <div style={{
+      fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
+      background: S.bg, minHeight: "100vh", color: S.text,
+      padding: "16px 8px 64px", position: "relative",
+      backgroundImage: S.halo, backgroundRepeat: "no-repeat", backgroundSize: "100% 720px",
+    }}>
       <style>{`
+        ::selection { background: ${S.gold}; color: ${dark ? "#05060a" : "#fff"}; }
+        *, *::before, *::after { box-sizing: border-box; }
+        button { transition: transform .18s cubic-bezier(.2,.8,.2,1), background .2s ease, border-color .2s ease, color .2s ease, box-shadow .2s ease; }
+        button:not(:disabled):hover { transform: translateY(-1px); }
+        button:not(:disabled):active { transform: translateY(0) scale(.98); }
+        input { transition: border-color .2s ease, box-shadow .2s ease, background .2s ease; }
+        .glass-card { backdrop-filter: blur(20px) saturate(150%); -webkit-backdrop-filter: blur(20px) saturate(150%); }
+        .data-row { transition: background .16s ease; }
+        .data-row:hover { background: ${dark ? "rgba(252,211,77,0.05)" : "rgba(160,106,0,0.05)"} !important; }
+        .lift { transition: transform .2s cubic-bezier(.2,.8,.2,1), box-shadow .2s ease; }
+        .lift:hover { transform: translateY(-2px); }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+        @keyframes haloPulse { 0%,100% { opacity: .7; } 50% { opacity: 1; } }
+        .fade-up { animation: fadeUp .6s cubic-bezier(.2,.8,.2,1) both; }
+        .th-sort { transition: color .2s ease; }
+        .th-sort:hover { color: ${S.gold} !important; }
+        input[type=range] { -webkit-appearance: none; appearance: none; height: 4px; border-radius: 99px; background: ${S.faint}; outline: none; }
+        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 16px; height: 16px; border-radius: 50%; background: ${S.gold}; cursor: pointer; box-shadow: 0 0 0 4px ${dark ? "rgba(252,211,77,0.18)" : "rgba(160,106,0,0.18)"}; transition: box-shadow .2s ease; }
+        input[type=range]::-webkit-slider-thumb:hover { box-shadow: 0 0 0 7px ${dark ? "rgba(252,211,77,0.22)" : "rgba(160,106,0,0.22)"}; }
+        ::-webkit-scrollbar { width: 11px; height: 11px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: ${dark ? "rgba(148,163,184,0.22)" : "rgba(120,100,70,0.28)"}; border-radius: 99px; border: 3px solid transparent; background-clip: content-box; }
+        ::-webkit-scrollbar-thumb:hover { background: ${dark ? "rgba(148,163,184,0.4)" : "rgba(120,100,70,0.45)"}; background-clip: content-box; }
         @media (max-width: 600px) {
           .hide-mobile { display: none !important; }
           table { font-size: 13px !important; }
           th, td { padding: 6px 6px !important; }
         }
       `}</style>
+      <button onClick={() => setDark(v => !v)} className="glass-card" style={{
+        position: "fixed", top: 16, left: 16, zIndex: 50,
+        display: "flex", alignItems: "center", gap: 8,
+        background: S.glass, border: `1px solid ${S.glassBorder}`,
+        color: S.text, borderRadius: 999, padding: "9px 16px 9px 11px",
+        fontSize: 13, fontWeight: 600, letterSpacing: 0.2, cursor: "pointer",
+        boxShadow: S.shadow,
+      }} title="Toggle light/dark mode">
+        <span style={{
+          display: "inline-flex", alignItems: "center", justifyContent: "center",
+          width: 24, height: 24, borderRadius: "50%", background: S.grad,
+          color: dark ? "#1a1000" : "#fff", fontSize: 14, lineHeight: 1,
+        }}>{dark ? "☀" : "☾"}</span>
+        <span>{dark ? "Light" : "Dark"}</span>
+      </button>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
 
         {/* HEADER */}
-        <div style={{ textAlign: "center", marginBottom: 20 }}>
-          <div style={{ fontSize: 12, letterSpacing: 4, color: S.gold, textTransform: "uppercase", marginBottom: 6 }}>Dr. David R. Hawkins</div>
-          <h1 style={{ fontSize: "clamp(20px, 5vw, 30px)", fontWeight: 400, color: S.text, margin: "0 0 4px", letterSpacing: 1 }}>Map of Consciousness</h1>
-          <div style={{ fontSize: "clamp(13px, 3vw, 15px)", color: S.muted }}>Calibration Reference — {DATA.length.toLocaleString()} entries</div>
+        <div className="fade-up" style={{ textAlign: "center", marginBottom: 36, marginTop: 40, paddingInline: 8 }}>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 18 }}>
+            <span style={{ height: 1, width: 28, background: `linear-gradient(90deg, transparent, ${S.gold})` }} />
+            <span style={{ fontSize: 11, letterSpacing: 4, color: S.gold, textTransform: "uppercase", fontWeight: 600 }}>Dr. David R. Hawkins</span>
+            <span style={{ height: 1, width: 28, background: `linear-gradient(90deg, ${S.gold}, transparent)` }} />
+          </div>
+          <h1 style={{
+            fontFamily: "'Fraunces', Georgia, serif",
+            fontSize: "clamp(38px, 8vw, 76px)", fontWeight: 500, lineHeight: 1.02,
+            margin: "0 0 16px", letterSpacing: "-0.02em",
+            background: S.gradText, WebkitBackgroundClip: "text", backgroundClip: "text",
+            WebkitTextFillColor: "transparent", color: S.gold,
+          }}>Map of Consciousness</h1>
+          <div style={{ fontSize: "clamp(14px, 3vw, 17px)", color: S.muted, maxWidth: 560, margin: "0 auto", lineHeight: 1.6 }}>
+            An interactive calibration reference of <span style={{ color: S.text, fontWeight: 600 }}>{DATA.length.toLocaleString()}</span> entries — mapped on the scale from Shame to Enlightenment.
+          </div>
         </div>
 
         {/* SEARCH ROW */}
-        <div style={{ display: "flex", gap: 6, marginBottom: 10, flexWrap: "wrap", alignItems: "center" }}>
-          <div style={{ position: "relative", flex: "1 1 180px", minWidth: 0, display: "flex" }}>
+        <div className="fade-up" style={{ display: "flex", gap: 8, marginBottom: 12, flexWrap: "wrap", alignItems: "center" }}>
+          <div style={{ position: "relative", flex: "1 1 260px", minWidth: 0, display: "flex", alignItems: "center" }}>
+            <span style={{ position: "absolute", left: 16, color: S.muted, fontSize: 16, pointerEvents: "none", lineHeight: 1 }}>⌕</span>
             <input
               value={search} onChange={e => { setSearch(e.target.value); setPage(1); }}
               placeholder="Search name, description, category…"
-              style={{ flex: 1, minWidth: 0, background: S.card, border: `1px solid ${S.border}`, borderRadius: 8, padding: "9px 34px 9px 13px", color: S.text, fontSize: 15, outline: "none" }}
+              onFocus={e => { e.target.style.borderColor = S.gold; e.target.style.boxShadow = `0 0 0 4px ${dark ? "rgba(252,211,77,0.12)" : "rgba(160,106,0,0.1)"}`; }}
+              onBlur={e => { e.target.style.borderColor = S.border; e.target.style.boxShadow = "none"; }}
+              className="glass-card"
+              style={{ flex: 1, minWidth: 0, background: S.inputBg, border: `1px solid ${S.border}`, borderRadius: 999, padding: "13px 40px 13px 40px", color: S.text, fontSize: 15, outline: "none", fontFamily: "inherit" }}
             />
             {search && (
               <button
                 onClick={() => { setSearch(""); setPage(1); }}
                 title="Clear search"
                 style={{
-                  position: "absolute", right: 6, top: "50%", transform: "translateY(-50%)",
-                  background: "none", border: "none", color: S.muted, cursor: "pointer",
-                  fontSize: 16, lineHeight: 1, padding: "4px 8px", borderRadius: 4,
+                  position: "absolute", right: 8, top: "50%", transform: "translateY(-50%)",
+                  background: S.faint, border: "none", color: S.muted, cursor: "pointer",
+                  fontSize: 14, lineHeight: 1, width: 26, height: 26, borderRadius: "50%",
+                  display: "flex", alignItems: "center", justifyContent: "center",
                 }}
               >
                 ✕
@@ -4409,39 +4478,33 @@ export default function HawkinsTable() {
           {pill(compact, () => setCompact(v => !v), "Compact")}
           {pill(starredOnly, () => setStarredOnly(v => !v), `★ Starred${Object.values(starred).filter(Boolean).length ? ` (${Object.values(starred).filter(Boolean).length})` : ""}`)}
           {hasFilters && (
-            <button onClick={clearAll} style={{ background: "none", border: `1px solid ${S.red}`, color: S.red, borderRadius: 20, padding: "5px 13px", fontSize: 13, cursor: "pointer" }}>
+            <button onClick={clearAll} style={{ background: S.activeDanger, border: `1px solid ${S.red}44`, color: S.red, borderRadius: 999, padding: "9px 16px", fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" }}>
               ✕ Clear filters
             </button>
           )}
           <button onClick={() => setShowAdvanced(v => !v)} style={{
-            background: showAdvanced ? S.activeBlue : S.card,
-            border: `1px solid ${showAdvanced || hasFilters ? S.blue : S.border}`,
-            color: showAdvanced ? S.activeBlueText : hasFilters ? S.blue : S.muted,
-            borderRadius: 20, padding: "5px 13px", fontSize: 13, cursor: "pointer",
-            fontFamily: "Georgia, serif", whiteSpace: "nowrap", display: "flex", alignItems: "center", gap: 5,
-          }}>
-            {showAdvanced ? "▲" : "▼"} Advanced filters{hasFilters ? " ●" : ""}
-          </button>
-          <button onClick={() => setDark(v => !v)} style={{
-            background: S.card, border: `1px solid ${S.border}`,
-            color: S.muted, borderRadius: 20, padding: "5px 13px", fontSize: 15,
-            cursor: "pointer", fontFamily: "Georgia, serif",
-          }} title="Toggle light/dark mode">
-            {dark ? "☀" : "☾"}
+            background: showAdvanced ? S.grad : S.card,
+            border: `1px solid ${showAdvanced ? "transparent" : hasFilters ? S.gold : S.border}`,
+            color: showAdvanced ? (dark ? "#1a1000" : "#fff") : hasFilters ? S.gold : S.muted,
+            borderRadius: 999, padding: "9px 18px", fontSize: 13, fontWeight: 600, cursor: "pointer",
+            fontFamily: "inherit", whiteSpace: "nowrap", display: "flex", alignItems: "center", gap: 6,
+            boxShadow: showAdvanced ? S.shadow : "none",
+          }} className="glass-card">
+            <span style={{ fontSize: 11 }}>{showAdvanced ? "▲" : "▼"}</span> Advanced filters{hasFilters ? " ●" : ""}
           </button>
           <div style={{ fontSize: 14, color: S.muted, whiteSpace: "nowrap", marginLeft: "auto" }}>
-            <span style={{ color: stats ? locColor(stats.avg, S) : S.muted }}>{filtered.length.toLocaleString()}</span> results
+            <span style={{ color: stats ? locColor(stats.avg, S) : S.muted, fontWeight: 700, fontFamily: "'JetBrains Mono', monospace" }}>{filtered.length.toLocaleString()}</span> results
           </div>
         </div>
 
         {/* LEVELS-OF-CONSCIOUSNESS MAP CTA + PANEL (single container) */}
-        <div style={{
+        <div className="glass-card fade-up" style={{
           marginBottom: 14,
           background: S.card,
-          border: `1px solid ${S.gold}`,
-          borderRadius: 12,
+          border: `1px solid ${S.gold}40`,
+          borderRadius: 16,
           overflow: "hidden",
-          boxShadow: showLevelsMap ? `0 0 0 1px ${S.gold}33` : "none",
+          boxShadow: showLevelsMap ? S.shadow : "none",
         }}>
           <button
             onClick={() => setShowLevelsMap(v => !v)}
@@ -4449,16 +4512,16 @@ export default function HawkinsTable() {
               width: "100%", textAlign: "left",
               background: "transparent",
               border: "none",
-              borderBottom: showLevelsMap ? `1px solid ${S.gold}55` : "none",
+              borderBottom: showLevelsMap ? `1px solid ${S.gold}33` : "none",
               color: S.text,
-              padding: "12px 16px", fontSize: 14, cursor: "pointer",
-              fontFamily: "Georgia, serif", display: "flex", alignItems: "center", gap: 8,
+              padding: "16px 20px", fontSize: 14, cursor: "pointer",
+              fontFamily: "inherit", display: "flex", alignItems: "center", gap: 10,
             }}
           >
-            <span style={{ color: S.gold, fontSize: 16 }}>◈</span>
-            <span style={{ fontWeight: 600, color: S.gold }}>Map of the Levels of Consciousness</span>
+            <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 28, height: 28, borderRadius: 8, background: `${S.gold}1f`, color: S.gold, fontSize: 15 }}>◈</span>
+            <span style={{ fontWeight: 600, color: S.text, fontSize: 15 }}>Map of the Levels of Consciousness</span>
             <span style={{ color: S.muted, fontSize: 12 }} className="hide-mobile">— Hawkins' calibrated scale from Shame (20) to Enlightenment (1000)</span>
-            <span style={{ marginLeft: "auto", color: S.gold }}>{showLevelsMap ? "▲" : "▼"}</span>
+            <span style={{ marginLeft: "auto", color: S.gold, fontSize: 12 }}>{showLevelsMap ? "▲" : "▼"}</span>
           </button>
 
           {showLevelsMap && (
@@ -4506,6 +4569,23 @@ export default function HawkinsTable() {
           const divider = { height: 1, background: S.border, margin: "0 -16px 16px", opacity: 0.5 };
           return (
             <div style={{ background: S.card, border: `1px solid ${S.border}`, borderRadius: 12, padding: "16px", marginBottom: 14 }}>
+
+              {/* PANEL HEADER + CLEAR */}
+              {hasFilters && (
+                <>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 8, marginBottom: 16 }}>
+                    <span style={{ fontSize: 13, color: S.muted }}>
+                      <span style={{ color: S.gold, fontWeight: 600 }}>{filtered.length.toLocaleString()}</span> results match your filters
+                    </span>
+                    <button onClick={clearAll} style={{
+                      background: S.activeDanger, border: `1px solid ${S.red}`, color: S.red,
+                      borderRadius: 20, padding: "7px 16px", fontSize: 13, fontWeight: 600, cursor: "pointer",
+                      fontFamily: "inherit", whiteSpace: "nowrap",
+                    }}>✕ Clear all filters</button>
+                  </div>
+                  <div style={divider} />
+                </>
+              )}
 
               {/* SOURCE */}
               <div style={sectionRow}>
@@ -4564,7 +4644,7 @@ export default function HawkinsTable() {
                     border: `1px solid ${showCatPanel ? S.blue : S.border}`,
                     color: showCatPanel ? S.activeBlueText : S.muted,
                     borderRadius: 20, padding: "5px 13px", fontSize: 13, cursor: "pointer",
-                    fontFamily: "Georgia, serif", whiteSpace: "nowrap", display: "flex", alignItems: "center", gap: 4,
+                    fontFamily: "inherit", whiteSpace: "nowrap", display: "flex", alignItems: "center", gap: 4,
                   }}>
                     {showCatPanel ? "▲" : "▼"} Browse {ALL_CATEGORIES.filter(c => selectedGroup === "All" || groupForCategory(c) === selectedGroup).length} categories
                     {selectedCats.length ? ` (${selectedCats.length} selected)` : ""}
@@ -4585,7 +4665,7 @@ export default function HawkinsTable() {
                             border: `1px solid ${active ? S.blue : S.border}`,
                             color: active ? S.activeBlueText : S.muted,
                             borderRadius: 4, padding: "4px 10px", fontSize: 13, cursor: "pointer",
-                            fontFamily: "Georgia, serif",
+                            fontFamily: "inherit",
                           }}>{c}</button>
                         );
                       })}
@@ -4607,32 +4687,31 @@ export default function HawkinsTable() {
 
         {/* STATS BAR */}
         {showAdvanced && stats && filtered.length > 1 && (
-          <div style={{ display: "flex", gap: 20, marginBottom: 12, flexWrap: "wrap", background: S.card, border: `1px solid ${S.border}`, borderRadius: 8, padding: "10px 12px", fontSize: "clamp(12px, 3vw, 14px)" }}>
-            <div><span style={{ color: S.muted }}>Entries: </span><span style={{ color: S.text, fontWeight: 600 }}>{stats.total}</span></div>
-            <div><span style={{ color: S.muted }}>Avg LOC: </span><span style={{ color: locColor(stats.avg, S), fontWeight: 600 }}>{stats.avg}</span></div>
-            <div><span style={{ color: S.muted }}>Highest: </span>
-              <span style={{ color: locColor(stats.high, S), fontWeight: 600 }}>{stats.high}</span>
+          <div className="glass-card" style={{ display: "flex", gap: 28, marginBottom: 12, flexWrap: "wrap", background: S.card, border: `1px solid ${S.border}`, borderRadius: 14, padding: "14px 18px", fontSize: "clamp(12px, 3vw, 14px)" }}>
+            <div><span style={{ color: S.muted }}>Entries </span><span style={{ color: S.text, fontWeight: 700, fontFamily: "'JetBrains Mono', monospace" }}>{stats.total}</span></div>
+            <div><span style={{ color: S.muted }}>Avg LOC </span><span style={{ color: locColor(stats.avg, S), fontWeight: 700, fontFamily: "'JetBrains Mono', monospace" }}>{stats.avg}</span></div>
+            <div><span style={{ color: S.muted }}>Highest </span>
+              <span style={{ color: locColor(stats.high, S), fontWeight: 700, fontFamily: "'JetBrains Mono', monospace" }}>{stats.high}</span>
               <span style={{ color: S.muted }}> — {stats.highItem?.name}</span>
             </div>
-            <div><span style={{ color: S.muted }}>Lowest: </span>
-              <span style={{ color: locColor(stats.low, S), fontWeight: 600 }}>{stats.low}</span>
+            <div><span style={{ color: S.muted }}>Lowest </span>
+              <span style={{ color: locColor(stats.low, S), fontWeight: 700, fontFamily: "'JetBrains Mono', monospace" }}>{stats.low}</span>
               <span style={{ color: S.muted }}> — {stats.lowItem?.name}</span>
             </div>
           </div>
         )}
 
         {/* TABLE */}
-        <div style={{ background: S.card, border: `1px solid ${S.border}`, borderRadius: 12, overflow: "hidden" }}>
+        <div className="glass-card fade-up" style={{ background: S.card, border: `1px solid ${S.border}`, borderRadius: 18, overflow: "hidden", boxShadow: S.shadow }}>
           <div style={{ overflowX: "auto" }}>
             <table style={{ width: "100%", borderCollapse: "collapse", fontSize: compact ? 14 : 15 }}>
               <thead>
                 <tr>
                   <th style={{ ...thStyle(""), width: 28, textAlign: "center" }}>★</th>
-                  <th style={thStyle("name")} onClick={() => toggleSort("name")}>Name <SortIcon k="name" /></th>
-                  <th style={thStyle("category")} onClick={() => toggleSort("category")}>Category <SortIcon k="category" /></th>
-                  <th style={{ ...thStyle("loc"), textAlign: "right" }} onClick={() => toggleSort("loc")}>LOC <SortIcon k="loc" /></th>
+                  <th className="th-sort" style={thStyle("name")} onClick={() => toggleSort("name")}>Name <SortIcon k="name" /></th>
+                  <th className="th-sort" style={{ ...thStyle("loc"), textAlign: "right" }} onClick={() => toggleSort("loc")}>LOC <SortIcon k="loc" /></th>
                   {!compact && <th style={{ ...thStyle(""), minWidth: 90 }}>Level</th>}
-                  <th style={thStyle("trueOrPositive")} onClick={() => toggleSort("trueOrPositive")}>T/F <SortIcon k="trueOrPositive" /></th>
+                  <th className="th-sort" style={thStyle("trueOrPositive")} onClick={() => toggleSort("trueOrPositive")}>T/F <SortIcon k="trueOrPositive" /></th>
                   {!compact && <th style={thStyle("dateContext")}>Source</th>}
                 </tr>
               </thead>
@@ -4644,18 +4723,17 @@ export default function HawkinsTable() {
                   const p = compact ? "6px 10px" : "9px 12px";
                   return (
                     <>
-                      <tr key={item.name + i}
+                      <tr key={item.name + i} className="data-row"
                         onClick={() => setExpanded(isExp ? null : i)}
                         style={{ cursor: "pointer", background: rowBg, borderBottom: `1px solid ${S.faint}` }}>
                         <td style={{ padding: p, textAlign: "center" }} onClick={e => toggleStar(e, item.name)}>
-                          <span style={{ color: isStarred ? S.gold : S.faint, fontSize: 16 }}>★</span>
+                          <span style={{ color: isStarred ? S.gold : (dark ? "rgba(148,163,184,0.3)" : "rgba(120,100,70,0.3)"), fontSize: 16 }}>★</span>
                         </td>
                         <td style={{ padding: p, fontWeight: 500, color: S.text, maxWidth: 280 }}>
                           {item.name}
                           <span style={{ marginLeft: 5, color: isExp ? S.gold : S.muted, fontSize: 9 }}>{isExp ? "▲" : "▼"}</span>
                         </td>
-                        <td style={{ padding: p, color: S.muted, fontSize: 13, letterSpacing: 0.2, display: "none", maxWidth: 0 }} className="hide-mobile">{item.category}</td>
-                        <td style={{ padding: p, textAlign: "right", fontWeight: 700, color: locColor(item.loc, S), fontFamily: "monospace", fontSize: compact ? 14 : "clamp(13px, 3vw, 16px)", whiteSpace: "nowrap" }}>
+                        <td style={{ padding: p, textAlign: "right", fontWeight: 700, color: locColor(item.loc, S), fontFamily: "'JetBrains Mono', monospace", fontSize: compact ? 14 : "clamp(13px, 3vw, 16px)", whiteSpace: "nowrap" }}>
                           {item.locDisplay}
                         </td>
                         {!compact && (
@@ -4674,7 +4752,13 @@ export default function HawkinsTable() {
                       </tr>
                       {isExp && (
                         <tr key={"exp" + i} style={{ background: S.rowExpDesc }}>
-                          <td colSpan={compact ? 5 : 7} style={{ padding: "12px 18px 14px 40px", borderBottom: `2px solid ${S.gold}20` }}>
+                          <td colSpan={compact ? 4 : 6} style={{ padding: "12px 18px 14px 40px", borderBottom: `2px solid ${S.gold}20` }}>
+                            {/* Category chip */}
+                            <div style={{ marginBottom: 8 }}>
+                              <span style={{ display: "inline-flex", alignItems: "center", gap: 5, fontSize: 11, fontWeight: 600, letterSpacing: 0.3, color: S.muted, background: S.faint, border: `1px solid ${S.border}`, borderRadius: 999, padding: "3px 10px" }}>
+                                {item.category}
+                              </span>
+                            </div>
                             {/* Entry description */}
                             <div style={{ color: S.text, fontSize: 14, fontStyle: "italic", marginBottom: 10 }}>
                               {item.description}
@@ -4707,7 +4791,7 @@ export default function HawkinsTable() {
                 })}
                 {filtered.length === 0 && (
                   <tr>
-                    <td colSpan={compact ? 5 : 7} style={{ padding: 40, textAlign: "center", color: S.muted }}>
+                    <td colSpan={compact ? 4 : 6} style={{ padding: 40, textAlign: "center", color: S.muted }}>
                       No results. <button onClick={clearAll} style={{ color: S.blue, background: "none", border: "none", cursor: "pointer", fontSize: 15 }}>Clear all filters</button>
                     </td>
                   </tr>
@@ -4718,42 +4802,37 @@ export default function HawkinsTable() {
         </div>
 
         {/* PAGINATION */}
-        {totalPages > 1 && (
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, marginTop: 14, flexWrap: "wrap" }}>
-            <button onClick={() => setPage(1)} disabled={safePage === 1}
-              style={{ background: S.card, border: `1px solid ${S.border}`, color: safePage === 1 ? S.faint : S.muted, borderRadius: 8, padding: "7px 12px", fontSize: 14, cursor: safePage === 1 ? "default" : "pointer" }}>
-              ««
-            </button>
-            <button onClick={() => setPage(p => Math.max(1, p - 1))} disabled={safePage === 1}
-              style={{ background: S.card, border: `1px solid ${S.border}`, color: safePage === 1 ? S.faint : S.muted, borderRadius: 8, padding: "7px 14px", fontSize: 14, cursor: safePage === 1 ? "default" : "pointer" }}>
-              ‹ Prev
-            </button>
-            <span style={{ fontSize: 14, color: S.muted, padding: "0 6px" }}>
-              Page <span style={{ color: S.text, fontWeight: 600 }}>{safePage}</span> of <span style={{ color: S.text, fontWeight: 600 }}>{totalPages}</span>
+        {totalPages > 1 && (() => {
+          const navBtn = (disabled) => ({
+            background: S.card, border: `1px solid ${S.border}`, color: disabled ? S.faint : S.text,
+            borderRadius: 10, padding: "9px 14px", fontSize: 14, fontWeight: 500, fontFamily: "inherit",
+            cursor: disabled ? "default" : "pointer", opacity: disabled ? 0.5 : 1,
+          });
+          return (
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, marginTop: 20, flexWrap: "wrap" }}>
+            <button onClick={() => setPage(1)} disabled={safePage === 1} className="glass-card" style={navBtn(safePage === 1)}>««</button>
+            <button onClick={() => setPage(p => Math.max(1, p - 1))} disabled={safePage === 1} className="glass-card" style={navBtn(safePage === 1)}>‹ Prev</button>
+            <span style={{ fontSize: 14, color: S.muted, padding: "0 10px" }}>
+              Page <span style={{ color: S.text, fontWeight: 700, fontFamily: "'JetBrains Mono', monospace" }}>{safePage}</span> of <span style={{ color: S.text, fontWeight: 700, fontFamily: "'JetBrains Mono', monospace" }}>{totalPages}</span>
               <span style={{ color: S.muted, fontSize: 12 }}> ({((safePage-1)*pageSize+1).toLocaleString()}–{Math.min(safePage*pageSize, filtered.length).toLocaleString()} of {filtered.length.toLocaleString()})</span>
             </span>
-            <button onClick={() => setPage(p => Math.min(totalPages, p + 1))} disabled={safePage === totalPages}
-              style={{ background: S.card, border: `1px solid ${S.border}`, color: safePage === totalPages ? S.faint : S.muted, borderRadius: 8, padding: "7px 14px", fontSize: 14, cursor: safePage === totalPages ? "default" : "pointer" }}>
-              Next ›
-            </button>
-            <button onClick={() => setPage(totalPages)} disabled={safePage === totalPages}
-              style={{ background: S.card, border: `1px solid ${S.border}`, color: safePage === totalPages ? S.faint : S.muted, borderRadius: 8, padding: "7px 12px", fontSize: 14, cursor: safePage === totalPages ? "default" : "pointer" }}>
-              »»
-            </button>
+            <button onClick={() => setPage(p => Math.min(totalPages, p + 1))} disabled={safePage === totalPages} className="glass-card" style={navBtn(safePage === totalPages)}>Next ›</button>
+            <button onClick={() => setPage(totalPages)} disabled={safePage === totalPages} className="glass-card" style={navBtn(safePage === totalPages)}>»»</button>
           </div>
-        )}
+          );
+        })()}
 
         {/* PAGE SIZE SELECTOR */}
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 6, marginTop: 10, flexWrap: "wrap", fontSize: 13, color: S.muted }}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 6, marginTop: 12, flexWrap: "wrap", fontSize: 13, color: S.muted }}>
           <span>Show</span>
           {[25, 50, 100, 200].map(n => (
-            <button key={n} onClick={() => { setPageSize(n); setPage(1); }}
+            <button key={n} onClick={() => { setPageSize(n); setPage(1); }} className="glass-card"
               style={{
-                background: pageSize === n ? S.activeBlue : S.card,
-                border: `1px solid ${pageSize === n ? S.blue : S.border}`,
-                color: pageSize === n ? S.activeBlueText : S.muted,
-                borderRadius: 6, padding: "4px 10px", fontSize: 13, cursor: "pointer",
-                fontFamily: "Georgia, serif", minWidth: 40,
+                background: pageSize === n ? S.grad : S.card,
+                border: `1px solid ${pageSize === n ? "transparent" : S.border}`,
+                color: pageSize === n ? (dark ? "#1a1000" : "#fff") : S.muted,
+                borderRadius: 999, padding: "6px 14px", fontSize: 13, fontWeight: 600, cursor: "pointer",
+                fontFamily: "inherit", minWidth: 42,
               }}>
               {n}
             </button>
@@ -4762,14 +4841,14 @@ export default function HawkinsTable() {
         </div>
 
         {/* LEGEND */}
-        <div style={{ display: "flex", gap: 20, marginTop: 14, flexWrap: "wrap", justifyContent: "center" }}>
-          {[[S.gold, "700–∞ Enlightenment / Avatars"], [S.green, "500–699 Love / Joy / Peace"], [S.blue, "200–499 Courage–Reason"], [S.red, "Below 200 Negative / Force"]].map(([c, l]) => (
-            <div key={l} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13, color: S.muted }}>
-              <div style={{ width: 10, height: 10, borderRadius: "50%", background: c }} />{l}
+        <div className="glass-card" style={{ display: "flex", gap: 22, marginTop: 28, flexWrap: "wrap", justifyContent: "center", background: S.card, border: `1px solid ${S.border}`, borderRadius: 999, padding: "12px 22px", width: "fit-content", marginInline: "auto" }}>
+          {[[S.gold, "700–∞ Enlightenment"], [S.green, "500–699 Love / Joy / Peace"], [S.blue, "200–499 Courage–Reason"], [S.red, "Below 200 Force"]].map(([c, l]) => (
+            <div key={l} style={{ display: "flex", alignItems: "center", gap: 7, fontSize: 13, color: S.muted }}>
+              <div style={{ width: 10, height: 10, borderRadius: "50%", background: c, boxShadow: `0 0 8px ${c}88` }} />{l}
             </div>
           ))}
         </div>
-        <div style={{ textAlign: "center", marginTop: 10, fontSize: 12, color: S.muted, opacity: 0.5 }}>
+        <div style={{ textAlign: "center", marginTop: 24, fontSize: 12, color: S.muted, opacity: 0.55, lineHeight: 1.7 }}>
           Sources: Power vs. Force · Truth vs. Falsehood · The Eye of the I · I: Reality and Subjectivity · Vivesur calibration list · lecture compilations
         </div>
       </div>
