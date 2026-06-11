@@ -4435,17 +4435,19 @@ export default function HawkinsTable() {
 
         {/* HEADER */}
         <div className="fade-up" style={{ textAlign: "center", marginBottom: 36, marginTop: 40, paddingInline: 8 }}>
-          <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 18 }}>
+          <div style={{ marginBottom: 16 }}>
+            <h1 key={dark ? "title-dark" : "title-light"} className="hero-title" style={{
+              ["--grad"]: S.gradText, color: S.gold,
+              fontFamily: "'Fraunces', Georgia, serif",
+              fontSize: "clamp(38px, 8vw, 76px)", fontWeight: 500, lineHeight: 1.06,
+              margin: 0, letterSpacing: "-0.02em",
+            }}>Map of Consciousness</h1>
+          </div>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
             <span style={{ height: 1, width: 28, background: `linear-gradient(90deg, transparent, ${S.gold})` }} />
             <span style={{ fontSize: 11, letterSpacing: 4, color: S.gold, textTransform: "uppercase", fontWeight: 600 }}>Dr. David R. Hawkins</span>
             <span style={{ height: 1, width: 28, background: `linear-gradient(90deg, ${S.gold}, transparent)` }} />
           </div>
-          <h1 key={dark ? "title-dark" : "title-light"} className="hero-title" style={{
-            ["--grad"]: S.gradText, color: S.gold,
-            fontFamily: "'Fraunces', Georgia, serif",
-            fontSize: "clamp(38px, 8vw, 76px)", fontWeight: 500, lineHeight: 1.06,
-            margin: "0 0 16px", letterSpacing: "-0.02em",
-          }}>Map of Consciousness</h1>
           <div style={{ fontSize: "clamp(14px, 3vw, 17px)", color: S.muted, maxWidth: 560, margin: "0 auto", lineHeight: 1.6 }}>
             An interactive calibration reference of <span style={{ color: S.text, fontWeight: 600 }}>{DATA.length.toLocaleString()}</span> entries — mapped on the scale from Shame to Enlightenment.
           </div>
