@@ -4440,7 +4440,7 @@ export default function HawkinsTable() {
             <span style={{ fontSize: 11, letterSpacing: 4, color: S.gold, textTransform: "uppercase", fontWeight: 600 }}>Dr. David R. Hawkins</span>
             <span style={{ height: 1, width: 28, background: `linear-gradient(90deg, ${S.gold}, transparent)` }} />
           </div>
-          <h1 className="hero-title" style={{
+          <h1 key={dark ? "title-dark" : "title-light"} className="hero-title" style={{
             ["--grad"]: S.gradText, color: S.gold,
             fontFamily: "'Fraunces', Georgia, serif",
             fontSize: "clamp(38px, 8vw, 76px)", fontWeight: 500, lineHeight: 1.06,
