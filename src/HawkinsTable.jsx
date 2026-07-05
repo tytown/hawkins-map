@@ -822,12 +822,7 @@ const DATA = [
   { name: "Hippopotamus", category: "Animals", loc: 190, locDisplay: "190", trueOrPositive: null, description: "Hippopotamus", dateContext: null },
   { name: "Javelina", category: "Animals", loc: 195, locDisplay: "195", trueOrPositive: null, description: "Javelina / peccary", dateContext: null },
   { name: "Zebra, Gazelle, Giraffe (Grazers)", category: "Animals", loc: 200, locDisplay: "200", trueOrPositive: null, description: "Grazing animals at the 200 threshold", dateContext: null },
-  { name: "Deer", category: "Animals", loc: 205, locDisplay: "205", trueOrPositive: null, description: "Deer", dateContext: null },
-  { name: "Bison", category: "Animals", loc: 205, locDisplay: "205", trueOrPositive: null, description: "Bison / American buffalo", dateContext: null },
-  { name: "Domestic Pig", category: "Animals", loc: 205, locDisplay: "205", trueOrPositive: null, description: "Domestic pig", dateContext: null },
-  { name: "Elk", category: "Animals", loc: 210, locDisplay: "210", trueOrPositive: null, description: "Elk", dateContext: null },
   { name: "Dairy Cow", category: "Animals", loc: 210, locDisplay: "210", trueOrPositive: null, description: "Dairy cow", dateContext: null },
-  { name: "Sheep", category: "Animals", loc: 210, locDisplay: "210", trueOrPositive: null, description: "Sheep", dateContext: null },
   { name: "Range Cattle", category: "Animals", loc: 210, locDisplay: "210", trueOrPositive: null, description: "Range cattle / beef cattle", dateContext: null },
   { name: "Elephant", category: "Animals", loc: 235, locDisplay: "235", trueOrPositive: null, description: "Elephant — note: higher than previously compiled lists suggested (210)", dateContext: null },
   { name: "Farm Horse", category: "Animals", loc: 240, locDisplay: "240", trueOrPositive: null, description: "Farm / work horse", dateContext: null },
@@ -837,12 +832,8 @@ const DATA = [
   { name: "Dogs (general)", category: "Animals", loc: 245, locDisplay: "245", trueOrPositive: null, description: "Dogs generally", dateContext: null },
   { name: "Family Dog", category: "Animals", loc: 250, locDisplay: "250", trueOrPositive: null, description: "Family / named dog", dateContext: null },
   { name: "Monkey", category: "Animals", loc: 250, locDisplay: "250", trueOrPositive: null, description: "Monkey — note: Truth vs. Falsehood gives 250, earlier lists gave 210", dateContext: null },
-  { name: "Gorilla", category: "Animals", loc: 275, locDisplay: "275", trueOrPositive: null, description: "Gorilla", dateContext: null },
-  { name: "Chimpanzee", category: "Animals", loc: 305, locDisplay: "305", trueOrPositive: null, description: "Chimpanzee", dateContext: null },
   { name: "Oscar the Cat", category: "Animals", loc: 250, locDisplay: "250", trueOrPositive: null, description: "Oscar — the famous hospice cat who predicted patient deaths", dateContext: null },
-  { name: "Alex (Trained African Grey Parrot)", category: "Animals", loc: 401, locDisplay: "401", trueOrPositive: true, description: "Alex — Dr. Irene Pepperberg's research parrot, confirmed in Truth vs. Falsehood", dateContext: null },
   { name: "Koko (Trained Gorilla)", category: "Animals", loc: 405, locDisplay: "405", trueOrPositive: true, description: "Koko — the sign-language gorilla trained by Dr. Penny Patterson", dateContext: null },
-  { name: "Cat's Purr", category: "Animals", loc: 500, locDisplay: "500", trueOrPositive: true, description: "The sound/energy of a cat's purring — confirmed in Truth vs. Falsehood", dateContext: null },
   { name: "Dog's Wagging Tail", category: "Animals", loc: 500, locDisplay: "500", trueOrPositive: true, description: "The energy expressed by a dog's wagging tail", dateContext: null },
 
   // REGIONAL CALIBRATIONS — United States (Truth vs. Falsehood, direct source)
@@ -874,7 +865,6 @@ const DATA = [
   { name: "Ottawa", category: "Countries & Regions", loc: 400, locDisplay: "400", trueOrPositive: true, description: "Ottawa, Canada", dateContext: "TvF" },
   { name: "Toronto", category: "Countries & Regions", loc: 425, locDisplay: "425", trueOrPositive: true, description: "Toronto, Canada", dateContext: "TvF" },
   // Mexico
-  { name: "Mexico City", category: "Countries & Regions", loc: 305, locDisplay: "305", trueOrPositive: null, description: "Mexico City", dateContext: "TvF" },
   // US Cities breakdown
   { name: "Chicago", category: "Countries & Regions", loc: 445, locDisplay: "445", trueOrPositive: true, description: "Chicago, Illinois", dateContext: "TvF" },
   { name: "Chicago — Lake Shore Drive", category: "Countries & Regions", loc: 450, locDisplay: "450", trueOrPositive: true, description: "Lake Shore Drive, Chicago", dateContext: "TvF" },
@@ -1015,7 +1005,6 @@ const DATA = [
   { name: "Quaker Oats (product)", category: "Companies & Commerce", loc: 305, locDisplay: "305", trueOrPositive: null, description: "Quaker Oats product", dateContext: "TvF" },
   { name: "Quilting", category: "Companies & Commerce", loc: 345, locDisplay: "345", trueOrPositive: true, description: "Quilting as a craft", dateContext: "TvF" },
   { name: "Roadside Farm Stands", category: "Companies & Commerce", loc: 355, locDisplay: "355", trueOrPositive: true, description: "Roadside farm produce stands", dateContext: "TvF" },
-  { name: "Rodeo", category: "Sports & Physical Activity", loc: 255, locDisplay: "255", trueOrPositive: null, description: "Rodeo event", dateContext: "TvF" },
   { name: "Santa Claus (concept)", category: "Key Statements", loc: 390, locDisplay: "390", trueOrPositive: true, description: "Santa Claus tradition and concept", dateContext: "TvF" },
   { name: "Sex", category: "Key Statements", loc: 250, locDisplay: "250", trueOrPositive: null, description: "Sex — calibrates as neutral; intent determines impact", dateContext: "TvF" },
   { name: "Sidewalk Vendors", category: "Companies & Commerce", loc: 205, locDisplay: "205", trueOrPositive: null, description: "Sidewalk vendors", dateContext: "TvF" },
@@ -1420,7 +1409,6 @@ const DATA = [
   { name: "Radical Conservative (political spectrum)", category: "Political Figures", loc: 175, locDisplay: "175", trueOrPositive: false, description: "Radical conservative political position", dateContext: "TvF" },
   { name: "Boston Globe Editorial Section", category: "Media & Communications", loc: 200, locDisplay: "200", trueOrPositive: null, description: "Boston Globe editorial section", dateContext: "TvF 2004" },
   { name: "Chicago Tribune", category: "Media & Communications", loc: 350, locDisplay: "350", trueOrPositive: true, description: "Chicago Tribune newspaper", dateContext: "TvF" },
-  { name: "Christian Science Monitor", category: "Media & Communications", loc: 425, locDisplay: "425", trueOrPositive: true, description: "Christian Science Monitor newspaper", dateContext: "TvF" },
   { name: "Economist, The", category: "Media & Communications", loc: 445, locDisplay: "445", trueOrPositive: true, description: "The Economist magazine", dateContext: "TvF" },
   { name: "Financial Times", category: "Media & Communications", loc: 410, locDisplay: "410", trueOrPositive: true, description: "Financial Times newspaper", dateContext: "TvF" },
   { name: "Los Angeles Times", category: "Media & Communications", loc: 300, locDisplay: "300", trueOrPositive: null, description: "Los Angeles Times newspaper", dateContext: "TvF" },
@@ -1581,7 +1569,6 @@ const DATA = [
   { name: "Gates, Ford, Mellon, Carnegie Foundations", category: "Organizations & Institutions", loc: 400, locDisplay: "400", trueOrPositive: true, description: "Major philanthropic foundations collectively", dateContext: "TvF" },
   { name: "Kellogg, Pew, Duke, Walmart Foundations", category: "Organizations & Institutions", loc: 400, locDisplay: "400", trueOrPositive: true, description: "Kellogg, Pew, Duke, Walmart foundations", dateContext: "TvF" },
   { name: "Lilly, Rockefeller, F.W. Johnson Foundations", category: "Organizations & Institutions", loc: 400, locDisplay: "400", trueOrPositive: true, description: "Lilly, Rockefeller, F.W. Johnson foundations", dateContext: "TvF" },
-  { name: "Templeton Foundation", category: "Organizations & Institutions", loc: 500, locDisplay: "500", trueOrPositive: true, description: "Templeton Foundation — highest of all major foundations; funds spirituality/science programs", dateContext: "TvF" },
   { name: "Wheelchair Foundation (K. Behring)", category: "Organizations & Institutions", loc: 520, locDisplay: "520", trueOrPositive: true, description: "Ken Behring Wheelchair Foundation — highest calibrating philanthropic foundation", dateContext: "TvF" },
   { name: "American Spirit Tobacco Co.", category: "Companies & Commerce", loc: 285, locDisplay: "285", trueOrPositive: null, description: "American Spirit Tobacco Company", dateContext: "TvF" },
   { name: "American Spirit Tobacco (product)", category: "Companies & Commerce", loc: 205, locDisplay: "205", trueOrPositive: null, description: "American Spirit cigarette product", dateContext: "TvF" },
@@ -1595,16 +1582,13 @@ const DATA = [
   { name: "Costco", category: "Companies & Commerce", loc: 310, locDisplay: "310", trueOrPositive: null, description: "Costco Wholesale", dateContext: "TvF" },
   { name: "Dillard's Dept. Store", category: "Companies & Commerce", loc: 350, locDisplay: "350", trueOrPositive: true, description: "Dillard's department store", dateContext: "TvF" },
   { name: "Dow Chemical", category: "Companies & Commerce", loc: 325, locDisplay: "325", trueOrPositive: null, description: "Dow Chemical Company", dateContext: "TvF" },
-  { name: "FedEx", category: "Companies & Commerce", loc: 340, locDisplay: "340", trueOrPositive: null, description: "FedEx Corporation", dateContext: "TvF" },
   { name: "Ford Motor Co.", category: "Companies & Commerce", loc: 205, locDisplay: "205", trueOrPositive: null, description: "Ford Motor Company", dateContext: "TvF" },
   { name: "General Electric", category: "Companies & Commerce", loc: 205, locDisplay: "205", trueOrPositive: null, description: "General Electric", dateContext: "TvF" },
-  { name: "General Motors", category: "Companies & Commerce", loc: 205, locDisplay: "205", trueOrPositive: null, description: "General Motors", dateContext: "TvF" },
   { name: "Gulf, Exxon", category: "Companies & Commerce", loc: 205, locDisplay: "205", trueOrPositive: null, description: "Gulf Oil / ExxonMobil", dateContext: "TvF" },
   { name: "Harley Davidson", category: "Companies & Commerce", loc: 300, locDisplay: "300", trueOrPositive: null, description: "Harley-Davidson", dateContext: "TvF" },
   { name: "Heinz Co.", category: "Companies & Commerce", loc: 280, locDisplay: "280", trueOrPositive: null, description: "H.J. Heinz Company", dateContext: "TvF" },
   { name: "Homco", category: "Companies & Commerce", loc: 305, locDisplay: "305", trueOrPositive: null, description: "Homco (home décor)", dateContext: "TvF" },
   { name: "Home Depot", category: "Companies & Commerce", loc: 305, locDisplay: "305", trueOrPositive: null, description: "The Home Depot", dateContext: "TvF" },
-  { name: "IBM", category: "Companies & Commerce", loc: 250, locDisplay: "250", trueOrPositive: null, description: "IBM Corporation", dateContext: "TvF" },
   { name: "IKEA", category: "Companies & Commerce", loc: 210, locDisplay: "210", trueOrPositive: null, description: "IKEA", dateContext: "TvF" },
   { name: "Kellogg Co.", category: "Companies & Commerce", loc: 355, locDisplay: "355", trueOrPositive: true, description: "Kellogg Company", dateContext: "TvF" },
   { name: "K-Mart", category: "Companies & Commerce", loc: 225, locDisplay: "225", trueOrPositive: null, description: "K-Mart department store", dateContext: "TvF" },
@@ -1619,12 +1603,10 @@ const DATA = [
   { name: "Singapore Airlines", category: "Companies & Commerce", loc: 275, locDisplay: "275", trueOrPositive: null, description: "Singapore Airlines", dateContext: "TvF" },
   { name: "Smuckers", category: "Companies & Commerce", loc: 340, locDisplay: "340", trueOrPositive: null, description: "Smucker's jams/jellies", dateContext: "TvF" },
   { name: "Southwest Airlines", category: "Companies & Commerce", loc: 345, locDisplay: "345", trueOrPositive: null, description: "Southwest Airlines", dateContext: "TvF" },
-  { name: "Starbucks", category: "Companies & Commerce", loc: 245, locDisplay: "245", trueOrPositive: null, description: "Starbucks Coffee", dateContext: "TvF" },
   { name: "Viacom", category: "Companies & Commerce", loc: 240, locDisplay: "240", trueOrPositive: null, description: "Viacom media company", dateContext: "TvF" },
   { name: "Union Carbide Corp.", category: "Companies & Commerce", loc: 235, locDisplay: "235", trueOrPositive: null, description: "Union Carbide Corporation", dateContext: "TvF" },
   { name: "UPS (United Parcel Service)", category: "Companies & Commerce", loc: 216, locDisplay: "216", trueOrPositive: null, description: "UPS package delivery", dateContext: "TvF" },
   { name: "Walmart", category: "Companies & Commerce", loc: 365, locDisplay: "365", trueOrPositive: true, description: "Walmart — highest calibrating major retailer; Sam Walton's founding principles calibrate at 385", dateContext: "TvF" },
-  { name: "Wendy's", category: "Companies & Commerce", loc: 245, locDisplay: "245", trueOrPositive: null, description: "Wendy's fast food", dateContext: "TvF" },
   { name: "Airlines Union", category: "Organizations & Institutions", loc: 205, locDisplay: "205", trueOrPositive: null, description: "Airline workers union", dateContext: "TvF" },
   { name: "Unions — Others (general)", category: "Organizations & Institutions", loc: 200, locDisplay: "200-208", trueOrPositive: null, description: "Other unions generally — 78% fall below 200", dateContext: "TvF" },
   { name: "Steelworkers Union", category: "Organizations & Institutions", loc: 202, locDisplay: "202", trueOrPositive: null, description: "United Steelworkers union", dateContext: "TvF" },
@@ -1634,12 +1616,9 @@ const DATA = [
   { name: "Law Enforcement — US Local", category: "Organizations & Institutions", loc: 305, locDisplay: "305", trueOrPositive: null, description: "Local police departments", dateContext: "TvF" },
   { name: "Interpol", category: "Organizations & Institutions", loc: 205, locDisplay: "205", trueOrPositive: null, description: "Interpol (international police)", dateContext: "TvF" },
   { name: "Scotland Yard", category: "Organizations & Institutions", loc: 210, locDisplay: "210", trueOrPositive: null, description: "Scotland Yard (UK Metropolitan Police)", dateContext: "TvF" },
-  { name: "Attractor Fields / Nonlinear Dynamics", category: "Scientists & Mathematicians", loc: 460, locDisplay: "460", trueOrPositive: true, description: "Attractor field theory / nonlinear dynamics — TRUE", dateContext: "TvF" },
   { name: "'Big Bang' Source-of-Universe Theory (True Biofield)", category: "Scientists & Mathematicians", loc: 460, locDisplay: "460", trueOrPositive: true, description: "Big Bang theory as source of universe — calibrates TRUE at 460", dateContext: "TvF" },
   { name: "Black Hole Theory rev. 2004 (Hawking)", category: "Scientists & Mathematicians", loc: 455, locDisplay: "455", trueOrPositive: true, description: "Stephen Hawking's revised 2004 black hole theory", dateContext: "TvF" },
   { name: "Bootstrap Theory", category: "Scientists & Mathematicians", loc: 455, locDisplay: "455", trueOrPositive: true, description: "Bootstrap theory in physics", dateContext: "TvF" },
-  { name: "Chaos Theory", category: "Scientists & Mathematicians", loc: 455, locDisplay: "455", trueOrPositive: true, description: "Chaos theory — TRUE at 455", dateContext: "TvF" },
-  { name: "Collective Unconscious (Jung)", category: "Scientists & Mathematicians", loc: 455, locDisplay: "455", trueOrPositive: true, description: "Jung's collective unconscious — calibrates TRUE at 455", dateContext: "TvF" },
   { name: "Consciousness as Consequence of Neuronal Activity", category: "Scientists & Mathematicians", loc: 140, locDisplay: "140", trueOrPositive: false, description: "Theory that consciousness is merely a product of neuronal activity — calibrates FALSE at 140", dateContext: "TvF" },
   { name: "Consciousness Calibration Process", category: "Scientists & Mathematicians", loc: 605, locDisplay: "605", trueOrPositive: true, description: "Hawkins' consciousness calibration process itself — calibrates at 605", dateContext: "TvF" },
   { name: "Darwinian Theory of Evolution", category: "Scientists & Mathematicians", loc: 450, locDisplay: "450", trueOrPositive: true, description: "Darwin's theory of evolution — TRUE at 450", dateContext: "TvF" },
@@ -1758,7 +1737,6 @@ const DATA = [
   { name: "Exeter Academy", category: "Organizations & Institutions", loc: 465, locDisplay: "465", trueOrPositive: true, description: "Phillips Exeter Academy", dateContext: "TvF" },
   { name: "Fordham University", category: "Organizations & Institutions", loc: 440, locDisplay: "440", trueOrPositive: true, description: "Fordham University", dateContext: "TvF" },
   { name: "Harvard Divinity School", category: "Organizations & Institutions", loc: 455, locDisplay: "455", trueOrPositive: true, description: "Harvard Divinity School", dateContext: "TvF" },
-  { name: "Harvard Medical School", category: "Organizations & Institutions", loc: 445, locDisplay: "445", trueOrPositive: true, description: "Harvard Medical School", dateContext: "TvF" },
   { name: "Heidelberg / Ivy League Colleges", category: "Organizations & Institutions", loc: 455, locDisplay: "455", trueOrPositive: true, description: "Heidelberg University and Ivy League colleges", dateContext: "TvF" },
   { name: "Jones, Bob, University", category: "Organizations & Institutions", loc: 400, locDisplay: "400", trueOrPositive: true, description: "Bob Jones University", dateContext: "TvF" },
   { name: "Marquette University", category: "Organizations & Institutions", loc: 440, locDisplay: "440", trueOrPositive: true, description: "Marquette University", dateContext: "TvF" },
@@ -1767,7 +1745,6 @@ const DATA = [
   { name: "Morehouse School of Medicine", category: "Organizations & Institutions", loc: 410, locDisplay: "410", trueOrPositive: true, description: "Morehouse School of Medicine", dateContext: "TvF" },
   { name: "Motorola University", category: "Organizations & Institutions", loc: 400, locDisplay: "400", trueOrPositive: true, description: "Motorola University (corporate training)", dateContext: "TvF" },
   { name: "Oxford Union", category: "Organizations & Institutions", loc: 495, locDisplay: "495", trueOrPositive: true, description: "Oxford Union debating society", dateContext: "TvF" },
-  { name: "Oxford University", category: "Organizations & Institutions", loc: 435, locDisplay: "435", trueOrPositive: true, description: "University of Oxford", dateContext: "TvF" },
   { name: "Sandhurst Military Academy (U.K.)", category: "Organizations & Institutions", loc: 465, locDisplay: "465", trueOrPositive: true, description: "Royal Military Academy Sandhurst", dateContext: "TvF" },
   { name: "Sorbonne, The (Paris)", category: "Organizations & Institutions", loc: 415, locDisplay: "415", trueOrPositive: true, description: "The Sorbonne, Paris", dateContext: "TvF" },
   { name: "So. Florida University", category: "Organizations & Institutions", loc: 305, locDisplay: "305", trueOrPositive: null, description: "University of South Florida", dateContext: "TvF" },
@@ -1777,8 +1754,6 @@ const DATA = [
   { name: "West Point Military Academy", category: "Organizations & Institutions", loc: 425, locDisplay: "425", trueOrPositive: true, description: "United States Military Academy at West Point", dateContext: "TvF" },
   { name: "Radicalization of Students (concept)", category: "Organizations & Institutions", loc: 180, locDisplay: "180", trueOrPositive: false, description: "Radicalization of students in universities calibrates at 180", dateContext: "TvF" },
   { name: "United States Constitution", category: "Founding Documents & Law", loc: 710, locDisplay: "710", trueOrPositive: true, description: "US Constitution — calibrates at 710, highest calibrating US government document", dateContext: "TvF" },
-  { name: "Declaration of Independence", category: "Founding Documents & Law", loc: 705, locDisplay: "705", trueOrPositive: true, description: "Declaration of Independence — calibrates at 705", dateContext: "TvF" },
-  { name: "Bill of Rights", category: "Founding Documents & Law", loc: 640, locDisplay: "640", trueOrPositive: true, description: "US Bill of Rights — calibrates at 640", dateContext: "TvF" },
   { name: "Signers of the U.S. Constitution", category: "Founding Documents & Law", loc: 515, locDisplay: "515", trueOrPositive: true, description: "The collective signers of the US Constitution", dateContext: "TvF" },
   { name: "Gettysburg Address", category: "Founding Documents & Law", loc: 550, locDisplay: "550", trueOrPositive: true, description: "Lincoln's Gettysburg Address", dateContext: "TvF" },
   { name: "Patriotism (concept)", category: "Founding Documents & Law", loc: 520, locDisplay: "520", trueOrPositive: true, description: "Patriotism — calibrates in the 500s; 'includes love of country'; contrasted with nationalism at 305", dateContext: "TvF" },
@@ -1810,7 +1785,6 @@ const DATA = [
   { name: "McCarthy Hearings", category: "Founding Documents & Law", loc: 185, locDisplay: "185", trueOrPositive: false, description: "McCarthyism / McCarthy hearings", dateContext: "TvF" },
   { name: "Moderates (political position)", category: "Founding Documents & Law", loc: 200, locDisplay: "200-390", trueOrPositive: null, description: "Political moderates — wide range 200-390", dateContext: "TvF" },
   { name: "Republican Party (US)", category: "Founding Documents & Law", loc: 315, locDisplay: "315", trueOrPositive: null, description: "Republican Party as an institution", dateContext: "TvF" },
-  { name: "Secularism (political)", category: "Founding Documents & Law", loc: 180, locDisplay: "180", trueOrPositive: false, description: "Political secularism", dateContext: "TvF" },
   { name: "Socialist Party (US)", category: "Founding Documents & Law", loc: 265, locDisplay: "265", trueOrPositive: null, description: "Socialist Party", dateContext: "TvF" },
   { name: "Torricelli Principle", category: "Founding Documents & Law", loc: 160, locDisplay: "160", trueOrPositive: false, description: "Torricelli Principle — crippled CIA and FBI per Hawkins", dateContext: "TvF" },
   { name: "'Section 527' Organizations", category: "Founding Documents & Law", loc: 200, locDisplay: "200", trueOrPositive: null, description: "Section 527 political organizations", dateContext: "TvF" },
@@ -1852,10 +1826,8 @@ const DATA = [
   { name: "American Medical Association (AMA)", category: "Organizations & Institutions", loc: 300, locDisplay: "300", trueOrPositive: null, description: "American Medical Association", dateContext: "TvF" },
   { name: "Big Brother-Big Sister", category: "Organizations & Institutions", loc: 320, locDisplay: "320", trueOrPositive: null, description: "Big Brothers Big Sisters of America", dateContext: "TvF" },
   { name: "Congress of Racial Equality (CORE)", category: "Organizations & Institutions", loc: 345, locDisplay: "345", trueOrPositive: true, description: "Congress of Racial Equality", dateContext: "TvF" },
-  { name: "Doctors without Borders", category: "Organizations & Institutions", loc: 500, locDisplay: "500", trueOrPositive: true, description: "Doctors Without Borders / Médecins Sans Frontières", dateContext: "TvF" },
   { name: "Elks (organization)", category: "Organizations & Institutions", loc: 375, locDisplay: "375", trueOrPositive: true, description: "Benevolent and Protective Order of Elks", dateContext: "TvF" },
   { name: "Girl Scouts/Boy Scouts", category: "Organizations & Institutions", loc: 450, locDisplay: "450", trueOrPositive: true, description: "Girl Scouts and Boy Scouts collectively", dateContext: "TvF" },
-  { name: "Humane Society", category: "Organizations & Institutions", loc: 285, locDisplay: "285", trueOrPositive: null, description: "Humane Society of the United States", dateContext: "TvF" },
   { name: "Innocence Project", category: "Organizations & Institutions", loc: 475, locDisplay: "475", trueOrPositive: true, description: "The Innocence Project — wrongful conviction advocacy", dateContext: "TvF" },
   { name: "Knights of Columbus", category: "Organizations & Institutions", loc: 360, locDisplay: "360", trueOrPositive: true, description: "Knights of Columbus", dateContext: "TvF" },
   { name: "Knights of Pythias", category: "Organizations & Institutions", loc: 360, locDisplay: "360", trueOrPositive: true, description: "Knights of Pythias fraternal organization", dateContext: "TvF" },
@@ -2407,7 +2379,6 @@ const DATA = [
   { name: "Sharon, Ariel", category: "Political Figures", loc: 205, locDisplay: "205", trueOrPositive: null, description: "Ariel Sharon — Israeli Prime Minister", dateContext: "TvF ~2004" },
   { name: "Sistani, Grand Ayatollah Ali", category: "Political Figures", loc: 125, locDisplay: "125", trueOrPositive: false, description: "Grand Ayatollah Ali Sistani — Iraqi Shia leader", dateContext: "TvF ~2004" },
   { name: "Taliban", category: "Organizations & Institutions", loc: 65, locDisplay: "65", trueOrPositive: false, description: "Taliban — Afghan militant organization", dateContext: "TvF ~2004" },
-  { name: "UNESCO", category: "Organizations & Institutions", loc: 355, locDisplay: "355", trueOrPositive: true, description: "UNESCO — United Nations Educational, Scientific and Cultural Organization", dateContext: "TvF ~2004" },
   { name: "United Nations (page 445)", category: "Organizations & Institutions", loc: 195, locDisplay: "195", trueOrPositive: false, description: "United Nations — confirmed at 195", dateContext: "TvF ~2004" },
   { name: "United Nations Security Council", category: "Organizations & Institutions", loc: 180, locDisplay: "180", trueOrPositive: false, description: "UN Security Council — even lower than UN overall", dateContext: "TvF ~2004" },
   { name: "Voodoo (practice)", category: "Spiritual Practices", loc: 50, locDisplay: "50", trueOrPositive: false, description: "Voodoo including blood sacrifice rituals — Haiti", dateContext: "TvF" },
@@ -2423,31 +2394,15 @@ const DATA = [
   { name: "South Korea", category: "Countries & Regions", loc: 400, locDisplay: "400", trueOrPositive: true, description: "South Korea", dateContext: "TvF ~2004" },
   { name: "Switzerland", category: "Countries & Regions", loc: 400, locDisplay: "400", trueOrPositive: true, description: "Switzerland", dateContext: "TvF ~2004" },
   { name: "United States (overall)", category: "Countries & Regions", loc: 421, locDisplay: "421", trueOrPositive: true, description: "United States overall — highest in the world per Hawkins", dateContext: "TvF ~2004" },
-  { name: "Bolivia", category: "Countries & Regions", loc: 300, locDisplay: "300", trueOrPositive: null, description: "Bolivia", dateContext: "TvF ~2004" },
-  { name: "Brazil", category: "Countries & Regions", loc: 300, locDisplay: "300", trueOrPositive: null, description: "Brazil", dateContext: "TvF ~2004" },
-  { name: "Central America", category: "Countries & Regions", loc: 355, locDisplay: "355", trueOrPositive: true, description: "Central America (region)", dateContext: "TvF ~2004" },
   { name: "China (government)", category: "Countries & Regions", loc: 300, locDisplay: "300", trueOrPositive: null, description: "China government — People's Republic of China 300, Government 150/190", dateContext: "TvF ~2004" },
   { name: "China (President)", category: "Countries & Regions", loc: 320, locDisplay: "320", trueOrPositive: null, description: "China President", dateContext: "TvF ~2004" },
-  { name: "Egypt", category: "Countries & Regions", loc: 350, locDisplay: "350", trueOrPositive: true, description: "Egypt", dateContext: "TvF ~2004" },
   { name: "Europe", category: "Countries & Regions", loc: 355, locDisplay: "355", trueOrPositive: true, description: "Europe (region)", dateContext: "TvF ~2004" },
   { name: "France", category: "Countries & Regions", loc: 305, locDisplay: "305", trueOrPositive: null, description: "France", dateContext: "TvF ~2004" },
-  { name: "Greece", category: "Countries & Regions", loc: 300, locDisplay: "300", trueOrPositive: null, description: "Greece", dateContext: "TvF ~2004" },
-  { name: "India", category: "Countries & Regions", loc: 355, locDisplay: "355", trueOrPositive: true, description: "India", dateContext: "TvF ~2004" },
-  { name: "Italy", category: "Countries & Regions", loc: 380, locDisplay: "380", trueOrPositive: true, description: "Italy", dateContext: "TvF ~2004" },
-  { name: "Japan", category: "Countries & Regions", loc: 355, locDisplay: "355", trueOrPositive: true, description: "Japan", dateContext: "TvF ~2004" },
-  { name: "Mexico", category: "Countries & Regions", loc: 300, locDisplay: "300", trueOrPositive: null, description: "Mexico", dateContext: "TvF ~2004" },
   { name: "Scandinavia", category: "Countries & Regions", loc: 350, locDisplay: "350", trueOrPositive: true, description: "Scandinavia (region)", dateContext: "TvF ~2004" },
   { name: "Argentina", category: "Countries & Regions", loc: 285, locDisplay: "285", trueOrPositive: null, description: "Argentina", dateContext: "TvF ~2004" },
-  { name: "Iceland", category: "Countries & Regions", loc: 255, locDisplay: "255", trueOrPositive: null, description: "Iceland", dateContext: "TvF ~2004" },
   { name: "Indonesia", category: "Countries & Regions", loc: 215, locDisplay: "215", trueOrPositive: null, description: "Indonesia", dateContext: "TvF ~2004" },
-  { name: "Manchuria", category: "Countries & Regions", loc: 200, locDisplay: "200", trueOrPositive: null, description: "Manchuria (China region)", dateContext: "TvF ~2004" },
-  { name: "Nepal", category: "Countries & Regions", loc: 205, locDisplay: "205", trueOrPositive: null, description: "Nepal", dateContext: "TvF ~2004" },
-  { name: "New Guinea", category: "Countries & Regions", loc: 202, locDisplay: "202", trueOrPositive: null, description: "Papua New Guinea", dateContext: "TvF ~2004" },
   { name: "Puerto Rico", category: "Countries & Regions", loc: 250, locDisplay: "250", trueOrPositive: null, description: "Puerto Rico", dateContext: "TvF ~2004" },
-  { name: "Russia", category: "Countries & Regions", loc: 200, locDisplay: "200", trueOrPositive: null, description: "Russia — moved to 'not free' under Putin", dateContext: "TvF ~2004" },
   { name: "Taiwan", category: "Countries & Regions", loc: 295, locDisplay: "295", trueOrPositive: null, description: "Taiwan", dateContext: "TvF ~2004" },
-  { name: "Tibet", category: "Countries & Regions", loc: 200, locDisplay: "200", trueOrPositive: null, description: "Tibet", dateContext: "TvF ~2004" },
-  { name: "Turkey", category: "Countries & Regions", loc: 245, locDisplay: "245", trueOrPositive: null, description: "Turkey", dateContext: "TvF ~2004" },
   { name: "Balkans", category: "Countries & Regions", loc: 185, locDisplay: "185", trueOrPositive: false, description: "Balkans region", dateContext: "TvF ~2004" },
   { name: "Bosnia", category: "Countries & Regions", loc: 180, locDisplay: "180", trueOrPositive: false, description: "Bosnia", dateContext: "TvF ~2004" },
   { name: "Burma", category: "Countries & Regions", loc: 155, locDisplay: "155", trueOrPositive: false, description: "Burma / Myanmar", dateContext: "TvF ~2004" },
@@ -2460,7 +2415,6 @@ const DATA = [
   { name: "North Korea", category: "Countries & Regions", loc: 175, locDisplay: "175", trueOrPositive: false, description: "North Korea", dateContext: "TvF ~2004" },
   { name: "Palestine", category: "Countries & Regions", loc: 185, locDisplay: "185", trueOrPositive: false, description: "Palestine / Palestinian territories", dateContext: "TvF ~2004" },
   { name: "Saudi Arabia", category: "Countries & Regions", loc: 175, locDisplay: "175", trueOrPositive: false, description: "Saudi Arabia", dateContext: "TvF ~2004" },
-  { name: "Sicily", category: "Countries & Regions", loc: 175, locDisplay: "175", trueOrPositive: false, description: "Sicily (region of Italy)", dateContext: "TvF ~2004" },
   { name: "South Africa", category: "Countries & Regions", loc: 190, locDisplay: "190", trueOrPositive: false, description: "South Africa", dateContext: "TvF ~2004" },
   { name: "Syria", category: "Countries & Regions", loc: 155, locDisplay: "155", trueOrPositive: false, description: "Syria", dateContext: "TvF ~2004" },
   { name: "Turkmenistan", category: "Countries & Regions", loc: 150, locDisplay: "150", trueOrPositive: false, description: "Turkmenistan", dateContext: "TvF ~2004" },
@@ -2556,7 +2510,6 @@ const DATA = [
   { name: "Jordan (Middle East)", category: "Countries & Regions", loc: 185, locDisplay: "185", trueOrPositive: false, description: "Jordan", dateContext: "TvF ~2004" },
   { name: "Kuwait (Middle East)", category: "Countries & Regions", loc: 190, locDisplay: "190", trueOrPositive: false, description: "Kuwait", dateContext: "TvF ~2004" },
   { name: "Lebanon (Middle East)", category: "Countries & Regions", loc: 130, locDisplay: "130", trueOrPositive: false, description: "Lebanon", dateContext: "TvF ~2004" },
-  { name: "Oman", category: "Countries & Regions", loc: 90, locDisplay: "90", trueOrPositive: false, description: "Oman", dateContext: "TvF ~2004" },
   { name: "Palestine (territories)", category: "Countries & Regions", loc: 185, locDisplay: "185", trueOrPositive: false, description: "Palestinian territories", dateContext: "TvF ~2004" },
   { name: "Saudi Arabia (country)", category: "Countries & Regions", loc: 175, locDisplay: "175", trueOrPositive: false, description: "Saudi Arabia", dateContext: "TvF ~2004" },
   { name: "Syria (country)", category: "Countries & Regions", loc: 160, locDisplay: "160", trueOrPositive: false, description: "Syria", dateContext: "TvF ~2004" },
@@ -2844,7 +2797,6 @@ const DATA = [
   { name: "Manchuria (region)", category: "Countries & Regions", loc: 200, locDisplay: "200", trueOrPositive: true, description: "Manchuria region.", dateContext: "TvF ~2004" },
   { name: "Nepal (country)", category: "Countries & Regions", loc: 205, locDisplay: "205", trueOrPositive: true, description: "Nepal.", dateContext: "TvF ~2004" },
   { name: "New Guinea (country)", category: "Countries & Regions", loc: 202, locDisplay: "202", trueOrPositive: true, description: "Papua New Guinea.", dateContext: "TvF ~2004" },
-  { name: "Puerto Rico", category: "Countries & Regions", loc: 250, locDisplay: "250", trueOrPositive: true, description: "Puerto Rico.", dateContext: "TvF ~2004" },
   { name: "Sicily (region)", category: "Countries & Regions", loc: 175, locDisplay: "175", trueOrPositive: false, description: "Sicily, Italy.", dateContext: "TvF ~2004" },
   { name: "Taiwan (country)", category: "Countries & Regions", loc: 295, locDisplay: "295", trueOrPositive: true, description: "Taiwan.", dateContext: "TvF ~2004" },
   { name: "Tibet (region)", category: "Countries & Regions", loc: 200, locDisplay: "200", trueOrPositive: true, description: "Tibet.", dateContext: "TvF ~2004" },
@@ -3301,7 +3253,6 @@ const DATA = [
   { name: "Mosque (general)", category: "Places of Spiritual Interest", loc: 495, locDisplay: "495", trueOrPositive: true, description: "Mosque — general calibration.", dateContext: "TvF ~2004" },
   { name: "Nativity, Church of the", category: "Places of Spiritual Interest", loc: 450, locDisplay: "450", trueOrPositive: true, description: "Church of the Nativity, Bethlehem.", dateContext: "TvF ~2004" },
   { name: "Pieta, The (Michelangelo)", category: "Places of Spiritual Interest", loc: 590, locDisplay: "590", trueOrPositive: true, description: "Michelangelo's Pieta, St. Peter's Basilica.", dateContext: "TvF ~2004" },
-  { name: "Pyramids of Egypt", category: "Places of Spiritual Interest", loc: 520, locDisplay: "520", trueOrPositive: true, description: "Egyptian pyramids.", dateContext: "TvF ~2004" },
   { name: "St. Patrick's Cathedral (New York City)", category: "Places of Spiritual Interest", loc: 530, locDisplay: "530", trueOrPositive: true, description: "St. Patrick's Cathedral, NYC.", dateContext: "TvF ~2004" },
   { name: "St. Peter, relics of (under Basilica floor, Rome)", category: "Places of Spiritual Interest", loc: 910, locDisplay: "910", trueOrPositive: true, description: "Relics of St. Peter beneath St. Peter's Basilica.", dateContext: "TvF ~2004" },
   { name: "Sakya Monastery (Tibet)", category: "Places of Spiritual Interest", loc: 390, locDisplay: "390", trueOrPositive: true, description: "Sakya Monastery, Tibet.", dateContext: "TvF ~2004" },
@@ -3313,7 +3264,6 @@ const DATA = [
   { name: "Tibetan Buddhist Stupa", category: "Places of Spiritual Interest", loc: 640, locDisplay: "640", trueOrPositive: true, description: "Tibetan Buddhist stupa — general calibration.", dateContext: "TvF ~2004" },
   { name: "Unity Village (Missouri)", category: "Places of Spiritual Interest", loc: 510, locDisplay: "510", trueOrPositive: true, description: "Unity Village, Lee's Summit, Missouri.", dateContext: "TvF ~2004" },
   { name: "Vatican, The", category: "Places of Spiritual Interest", loc: 570, locDisplay: "570", trueOrPositive: true, description: "The Vatican, Rome.", dateContext: "TvF ~2004" },
-  { name: "Washington National Cathedral", category: "Places of Spiritual Interest", loc: 530, locDisplay: "530", trueOrPositive: true, description: "Washington National Cathedral, DC.", dateContext: "TvF ~2004" },
   { name: "Westminster Abbey (London)", category: "Places of Spiritual Interest", loc: 790, locDisplay: "790", trueOrPositive: true, description: "Westminster Abbey, London.", dateContext: "TvF ~2004" },
   { name: "Ramana Maharshi (sage)", category: "Places of Spiritual Interest", loc: 720, locDisplay: "720", trueOrPositive: true, description: "Ramana Maharshi calibrates at 720 — same as Arunachala Mountain, his home.", dateContext: "TvF ~2004" },
   { name: "Nisargadatta Maharaj (sage)", category: "Places of Spiritual Interest", loc: 720, locDisplay: "720", trueOrPositive: true, description: "Nisargadatta Maharaj calibrates at 720.", dateContext: "TvF ~2004" },
@@ -3833,27 +3783,21 @@ const DATA = [
   { name: "Dhyana / Jhana (meditation)", category: "Spiritual Practices", loc: 985, locDisplay: "985", trueOrPositive: true, description: "Also Jhana — Buddhist/Vedic phrasing for meditation. From Vivesur list.", dateContext: "Vivesur/Hawkins" },
   { name: "Transcending the Levels of Consciousness (Hawkins book)", category: "Sacred Texts & Scriptures", loc: 965, locDisplay: "965", trueOrPositive: true, description: "Fourth book by David R. Hawkins M.D. Ph.D.", dateContext: "Vivesur/Hawkins" },
   { name: "Buddha's Law of Dependent Origination", category: "Consciousness Concepts", loc: 965, locDisplay: "965", trueOrPositive: true, description: "Buddhist philosophical teaching on interdependence / Pratītyasamutpāda.", dateContext: "Vivesur/Hawkins" },
-  { name: "Sermon on the Mount", category: "Sacred Texts & Scriptures", loc: 955, locDisplay: "955", trueOrPositive: true, description: "Sermon by Jesus Christ in the New Testament — Matthew 5-7.", dateContext: "Vivesur/Hawkins" },
   { name: "Statement: No one comes to the Father but by me", category: "Key Statements", loc: 940, locDisplay: "940", trueOrPositive: true, description: "Key Statement attributed to Jesus Christ (John 14:6).", dateContext: "Vivesur/Hawkins" },
   { name: "Raja Yoga", category: "Hinduism", loc: 930, locDisplay: "930", trueOrPositive: true, description: "Indian-Hindu yogic philosophy — the royal path of meditation.", dateContext: "Vivesur/Hawkins" },
   { name: "Avowal of Nicaea / Nicene Creed", category: "Christianity", loc: 895, locDisplay: "895", trueOrPositive: true, description: "Acknowledgement to Jesus Christ 325 AD — Nicene Creed as official doctrine.", dateContext: "Vivesur/Hawkins" },
   { name: "Map of Consciousness (Hawkins concept)", category: "Consciousness Concepts", loc: 840, locDisplay: "840", trueOrPositive: true, description: "The Map of Consciousness as conceived by David R. Hawkins M.D. Ph.D.", dateContext: "Vivesur/Hawkins" },
   { name: "Samadhi (Asamprajnata Nirvikalpa Nirbija)", category: "Spiritual Experiences", loc: 800, locDisplay: "800", trueOrPositive: true, description: "Highest form of samadhi — seedless, non-cognitive, non-dualistic absorption.", dateContext: "Vivesur/Hawkins" },
   { name: "Level: Self as Allness / Turiya", category: "Consciousness Concepts", loc: 750, locDisplay: "750", trueOrPositive: true, description: "Consciousness level descriptor: Self as Allness — Turiya state of non-dual awareness.", dateContext: "Vivesur/Hawkins" },
-  { name: "New Testament (Lamsa Translation)", category: "Sacred Texts & Scriptures", loc: 750, locDisplay: "750", trueOrPositive: true, description: "New Testament translated from Aramaic by George Lamsa — calibrates at 750.", dateContext: "Vivesur/Hawkins" },
   { name: "Kashyapa (9000 BC)", category: "Avatars & Great Figures", loc: 695, locDisplay: "695", trueOrPositive: true, description: "Ancient Indian Buddhist monk/Buddha figure, circa 9,000 BC.", dateContext: "Vivesur/Hawkins" },
   { name: "Level: Self as Existence", category: "Consciousness Concepts", loc: 680, locDisplay: "680", trueOrPositive: true, description: "Consciousness level descriptor: Self as pure Existence.", dateContext: "Vivesur/Hawkins" },
-  { name: "Haggadah", category: "Sacred Texts & Scriptures", loc: 645, locDisplay: "645", trueOrPositive: true, description: "Hebrew Passover narrative text from the Talmud.", dateContext: "Vivesur/Hawkins" },
-  { name: "Canon in D (Pachelbel)", category: "Artists & Music", loc: 645, locDisplay: "645", trueOrPositive: true, description: "Canon in D by Johann Pachelbel — classical music.", dateContext: "Vivesur/Hawkins" },
   { name: "Stupa (Tibetan Buddhist)", category: "Places of Spiritual Interest", loc: 640, locDisplay: "640", trueOrPositive: true, description: "Tibetan Buddhist sacred building and monument.", dateContext: "Vivesur/Hawkins" },
   { name: "Bill of Rights (US)", category: "Founding Documents & Law", loc: 640, locDisplay: "640", trueOrPositive: true, description: "US Bill of Rights by James Madison — from the US Constitution.", dateContext: "Vivesur/Hawkins" },
   { name: "Shangri-La (concept)", category: "Key Statements", loc: 625, locDisplay: "625", trueOrPositive: true, description: "Fictional place as concept — as depicted in the film Lost Horizon.", dateContext: "Vivesur/Hawkins" },
-  { name: "E Pluribus Unum", category: "Founding Documents & Law", loc: 605, locDisplay: "605", trueOrPositive: true, description: "'Out of many, one' — Great Seal of the United States.", dateContext: "Vivesur/Hawkins" },
   { name: "Kinesiologic Muscle Test", category: "Consciousness Concepts", loc: 605, locDisplay: "605", trueOrPositive: true, description: "Non-physiological response to the field of consciousness itself — basis of Hawkins' research method.", dateContext: "Vivesur/Hawkins" },
   { name: "Level: Peace / Oneness / Illumination / Enlightenment", category: "Consciousness Concepts", loc: 600, locDisplay: "600", trueOrPositive: true, description: "Consciousness level 600 descriptor: Peace, Oneness, Illumination, Enlightenment — experience as the witness.", dateContext: "Vivesur/Hawkins" },
   { name: "Dannion Brinkley", category: "Spiritual Teachers", loc: 595, locDisplay: "595", trueOrPositive: true, description: "Near-death experiencer and speaker.", dateContext: "Vivesur/Hawkins" },
   { name: "Michelangelo Buonarroti (work)", category: "Artists & Music", loc: 590, locDisplay: "590", trueOrPositive: true, description: "Work and paintings of Michelangelo Buonarroti.", dateContext: "Vivesur/Hawkins" },
-  { name: "Louis Armstrong (person)", category: "Artists & Music", loc: 590, locDisplay: "590", trueOrPositive: true, description: "US jazz musician Louis Armstrong (1901-1971) — person calibration.", dateContext: "Vivesur/Hawkins" },
   { name: "Level: Ecstasy", category: "Consciousness Concepts", loc: 590, locDisplay: "590", trueOrPositive: true, description: "Consciousness level 590 descriptor: Ecstasy.", dateContext: "Vivesur/Hawkins" },
   { name: "Level: Satori", category: "Consciousness Concepts", loc: 585, locDisplay: "585", trueOrPositive: true, description: "Consciousness level 585 descriptor: Satori.", dateContext: "Vivesur/Hawkins" },
   { name: "Ave Maria (music)", category: "Artists & Music", loc: 575, locDisplay: "575", trueOrPositive: true, description: "Classical sacred music — Ave Maria.", dateContext: "Vivesur/Hawkins" },
@@ -3861,83 +3805,46 @@ const DATA = [
   { name: "Joy to the World (music)", category: "Artists & Music", loc: 575, locDisplay: "575", trueOrPositive: true, description: "Classic Christmas hymn — Joy to the World.", dateContext: "Vivesur/Hawkins" },
   { name: "The Practice of the Presence of God (book)", category: "Sacred Texts & Scriptures", loc: 575, locDisplay: "575", trueOrPositive: true, description: "By Brother Lawrence of the Resurrection.", dateContext: "Vivesur/Hawkins" },
   { name: "Level: Surrender to God", category: "Consciousness Concepts", loc: 575, locDisplay: "575", trueOrPositive: true, description: "Consciousness level 575 descriptor: Surrender — process of surrendering to God.", dateContext: "Vivesur/Hawkins" },
-  { name: "Leonardo da Vinci (work)", category: "Artists & Music", loc: 565, locDisplay: "565", trueOrPositive: true, description: "Work and art of Leonardo da Vinci.", dateContext: "Vivesur/Hawkins" },
-  { name: "Abraham Lincoln", category: "Political Figures", loc: 565, locDisplay: "565", trueOrPositive: true, description: "(1809-1865) 16th US President — societal influence.", dateContext: "Vivesur/Hawkins" },
   { name: "Collective Unconscious (Jung)", category: "Consciousness Concepts", loc: 560, locDisplay: "560", trueOrPositive: true, description: "Term coined by C.G. Jung — the shared unconscious of humanity.", dateContext: "Vivesur/Hawkins" },
   { name: "Glamour: A World Problem (book)", category: "Sacred Texts & Scriptures", loc: 560, locDisplay: "560", trueOrPositive: true, description: "Book by Alice Bailey.", dateContext: "Vivesur/Hawkins" },
   { name: "Judaism (world religion overall)", category: "World Religions", loc: 555, locDisplay: "555", trueOrPositive: true, description: "Judaism as a world religion — overall calibration.", dateContext: "Vivesur/Hawkins" },
   { name: "Level: Devotion", category: "Consciousness Concepts", loc: 555, locDisplay: "555", trueOrPositive: true, description: "Consciousness level 555 descriptor: Devotion.", dateContext: "Vivesur/Hawkins" },
   { name: "Brother Sun Sister Moon (film)", category: "Movies", loc: 550, locDisplay: "550", trueOrPositive: true, description: "Movie about Saint Francis of Assisi.", dateContext: "Vivesur/Hawkins" },
-  { name: "Social Equality (US Constitution)", category: "Founding Documents & Law", loc: 550, locDisplay: "550", trueOrPositive: true, description: "Social equality as expressed in the US Constitution.", dateContext: "Vivesur/Hawkins" },
   { name: "Giacomo Puccini", category: "Artists & Music", loc: 550, locDisplay: "550", trueOrPositive: true, description: "(1858-1924) Italian opera composer.", dateContext: "Vivesur/Hawkins" },
   { name: "Gopi Krishna", category: "Spiritual Teachers", loc: 545, locDisplay: "545", trueOrPositive: true, description: "(1903-1984) Indian yogi — Kundalini researcher and author.", dateContext: "Vivesur/Hawkins" },
-  { name: "Charles Dickens (work)", category: "Writers & Literary", loc: 540, locDisplay: "540", trueOrPositive: true, description: "Works and books of Charles Dickens.", dateContext: "Vivesur/Hawkins" },
   { name: "Alcoholics Anonymous (organization)", category: "Organizations & Institutions", loc: 540, locDisplay: "540", trueOrPositive: true, description: "Alcoholics Anonymous — recovering addicts foundation.", dateContext: "Vivesur/Hawkins" },
   { name: "12 Step Self-Help Groups", category: "Organizations & Institutions", loc: 540, locDisplay: "540", trueOrPositive: true, description: "Worldwide movement for recovering addicts based on 12 steps.", dateContext: "Vivesur/Hawkins" },
   { name: "Bill Wilson", category: "Avatars & Great Figures", loc: 540, locDisplay: "540", trueOrPositive: true, description: "Founder of Alcoholics Anonymous.", dateContext: "Vivesur/Hawkins" },
   { name: "George Harrison (music)", category: "Artists & Music", loc: 540, locDisplay: "540", trueOrPositive: true, description: "(1943-2001) Music of George Harrison — Beatle and spiritual seeker.", dateContext: "Vivesur/Hawkins" },
-  { name: "Carl Gustav Jung (person)", category: "Scientists & Mathematicians", loc: 540, locDisplay: "540", trueOrPositive: true, description: "(1875-1961) Swiss psychotherapist and founder of analytical psychology.", dateContext: "Vivesur/Hawkins" },
-  { name: "Wolfgang Amadeus Mozart (music)", category: "Artists & Music", loc: 540, locDisplay: "540", trueOrPositive: true, description: "(1756-1791) Classical music of Wolfgang Amadeus Mozart.", dateContext: "Vivesur/Hawkins" },
   { name: "Level: Faith / Liturgy / Valor", category: "Consciousness Concepts", loc: 535, locDisplay: "535", trueOrPositive: true, description: "Consciousness level 535 descriptor: Faith, liturgy and valor.", dateContext: "Vivesur/Hawkins" },
   { name: "Christmas: Energy of Giving", category: "Spiritual Experiences", loc: 535, locDisplay: "535", trueOrPositive: true, description: "Christmas as energy of giving — distinct from Peace on Earth (675).", dateContext: "Vivesur/Hawkins" },
-  { name: "Johann Sebastian Bach (music)", category: "Artists & Music", loc: 530, locDisplay: "530", trueOrPositive: true, description: "Classical music work of Johann Sebastian Bach.", dateContext: "Vivesur/Hawkins" },
   { name: "Martin Buber", category: "Avatars & Great Figures", loc: 530, locDisplay: "530", trueOrPositive: true, description: "(1878-1965) Religious researcher and philosopher — I and Thou.", dateContext: "Vivesur/Hawkins" },
   { name: "Robert Baden-Powell", category: "Political Figures", loc: 525, locDisplay: "525", trueOrPositive: true, description: "Founder of the international scout movement.", dateContext: "Vivesur/Hawkins" },
-  { name: "Henri Matisse (work)", category: "Artists & Music", loc: 525, locDisplay: "525", trueOrPositive: true, description: "(1869-1954) French painter — work of Henri Matisse.", dateContext: "Vivesur/Hawkins" },
   { name: "Patriotism (concept)", category: "Consciousness Concepts", loc: 520, locDisplay: "520", trueOrPositive: true, description: "Love for one's country as a concept.", dateContext: "Vivesur/Hawkins" },
   { name: "Helen Keller (influence)", category: "Political Figures", loc: 520, locDisplay: "520", trueOrPositive: true, description: "(1880-1968) Societal influence of Helen Keller.", dateContext: "Vivesur/Hawkins" },
   { name: "Sri Poonja-Ji (H.W.L. Poonja)", category: "Avatars & Great Figures", loc: 520, locDisplay: "520", trueOrPositive: true, description: "(1910-1997) Indian-Hindu sage — disciple of Ramana Maharshi, teacher of Papaji lineage.", dateContext: "Vivesur/Hawkins" },
   { name: "Founding Fathers of the US", category: "Founding Documents & Law", loc: 515, locDisplay: "515", trueOrPositive: true, description: "Signatories of the US Constitution — collective calibration.", dateContext: "Vivesur/Hawkins" },
-  { name: "Gnostic Christianity", category: "World Religions", loc: 515, locDisplay: "515", trueOrPositive: true, description: "Gnostic branch of early Christianity.", dateContext: "Vivesur/Hawkins" },
   { name: "Thanksgiving (US holiday)", category: "Key Statements", loc: 515, locDisplay: "515", trueOrPositive: true, description: "US national holiday of Thanksgiving.", dateContext: "Vivesur/Hawkins" },
-  { name: "Santana (music)", category: "Artists & Music", loc: 515, locDisplay: "515", trueOrPositive: true, description: "Music by Carlos Santana.", dateContext: "Vivesur/Hawkins" },
   { name: "Jonathan Livingston Seagull (film)", category: "Movies", loc: 515, locDisplay: "515", trueOrPositive: true, description: "Film (1973) based on Richard Bach's novel.", dateContext: "Vivesur/Hawkins" },
   { name: "Thomas Merton", category: "Spiritual Teachers", loc: 515, locDisplay: "515", trueOrPositive: true, description: "(1915-1968) Monk, poet, and writer — Thomas Feverel Merton.", dateContext: "Vivesur/Hawkins" },
   { name: "Sacrificing one's life for another", category: "Key Statements", loc: 510, locDisplay: "510", trueOrPositive: true, description: "The act of self-sacrifice for another person — calibrates at 510.", dateContext: "Vivesur/Hawkins" },
   { name: "Oprah Winfrey Show", category: "Media & Communications", loc: 510, locDisplay: "510", trueOrPositive: true, description: "The Oprah Winfrey Show — TV program.", dateContext: "Vivesur/Hawkins" },
   { name: "US National Anthem (Star-Spangled Banner)", category: "Founding Documents & Law", loc: 510, locDisplay: "510", trueOrPositive: true, description: "The Star-Spangled Banner — US national anthem.", dateContext: "Vivesur/Hawkins" },
   { name: "Stars and Stripes (US flag)", category: "Founding Documents & Law", loc: 510, locDisplay: "510", trueOrPositive: true, description: "National flag of the United States of America.", dateContext: "Vivesur/Hawkins" },
-  { name: "Bee Gees (music)", category: "Artists & Music", loc: 510, locDisplay: "510", trueOrPositive: true, description: "Music of the Bee Gees.", dateContext: "Vivesur/Hawkins" },
   { name: "Pledge of Allegiance (US)", category: "Founding Documents & Law", loc: 510, locDisplay: "510", trueOrPositive: true, description: "US Pledge of Allegiance to the country and flag.", dateContext: "Vivesur/Hawkins" },
-  { name: "Ludwig van Beethoven (music)", category: "Artists & Music", loc: 510, locDisplay: "510", trueOrPositive: true, description: "(1770-1827) Music of Ludwig van Beethoven.", dateContext: "Vivesur/Hawkins" },
   { name: "Georg Friedrich Händel (music)", category: "Artists & Music", loc: 510, locDisplay: "510", trueOrPositive: true, description: "(1685-1759) German musician and composer — Handel.", dateContext: "Vivesur/Hawkins" },
-  { name: "Peter Paul Rubens (work)", category: "Artists & Music", loc: 510, locDisplay: "510", trueOrPositive: true, description: "(1577-1640) Work and paintings of Peter Paul Rubens.", dateContext: "Vivesur/Hawkins" },
-  { name: "David Bohm (person)", category: "Scientists & Mathematicians", loc: 507, locDisplay: "507", trueOrPositive: true, description: "(1917-1992) Quantum physicist — Implicate Order theory.", dateContext: "Vivesur/Hawkins" },
-  { name: "David Bohm (work)", category: "Scientists & Mathematicians", loc: 505, locDisplay: "505", trueOrPositive: true, description: "Work of David Bohm — Wholeness and the Implicate Order.", dateContext: "Vivesur/Hawkins" },
-  { name: "Barry Manilow", category: "Artists & Music", loc: 505, locDisplay: "505", trueOrPositive: true, description: "US singer Barry Manilow.", dateContext: "Vivesur/Hawkins" },
-  { name: "Nelson Mandela (societal influence)", category: "Political Figures", loc: 505, locDisplay: "505", trueOrPositive: true, description: "Societal influence of Nelson Mandela.", dateContext: "Vivesur/Hawkins" },
-  { name: "Johnny Cash (music)", category: "Artists & Music", loc: 505, locDisplay: "505", trueOrPositive: true, description: "(1932-2003) Music of Johnny Cash.", dateContext: "Vivesur/Hawkins" },
-  { name: "Eric Hoffer", category: "Philosophers", loc: 505, locDisplay: "505", trueOrPositive: true, description: "(1902-1983) Philosopher and writer — The True Believer.", dateContext: "Vivesur/Hawkins" },
-  { name: "Marie Curie", category: "Scientists & Mathematicians", loc: 505, locDisplay: "505", trueOrPositive: true, description: "(1867-1934) French chemist — Nobel Prize winner in Physics and Chemistry.", dateContext: "Vivesur/Hawkins" },
   { name: "William Jennings Bryan", category: "Political Figures", loc: 505, locDisplay: "505", trueOrPositive: true, description: "(1860-1925) US politician and orator.", dateContext: "Vivesur/Hawkins" },
-  { name: "Dante Alighieri", category: "Writers & Literary", loc: 505, locDisplay: "505", trueOrPositive: true, description: "(1265-1321) Italian poet — Divine Comedy.", dateContext: "Vivesur/Hawkins" },
-  { name: "Bob Dylan (music)", category: "Artists & Music", loc: 504, locDisplay: "504", trueOrPositive: true, description: "US singer-songwriter — music of Bob Dylan.", dateContext: "Vivesur/Hawkins" },
   { name: "Positive Thinking (dualistic concept)", category: "Consciousness Concepts", loc: 499, locDisplay: "499", trueOrPositive: true, description: "Positive thinking as a dualistic method of thought — calibrates just below 500.", dateContext: "Vivesur/Hawkins" },
   { name: "Stephen Hawking (person)", category: "Scientists & Mathematicians", loc: 499, locDisplay: "499", trueOrPositive: true, description: "British mathematician and astrophysicist Stephen Hawking.", dateContext: "Vivesur/Hawkins" },
   { name: "The Universe in a Nutshell (book)", category: "Scientists & Mathematicians", loc: 499, locDisplay: "499", trueOrPositive: true, description: "Book by Stephen Hawking.", dateContext: "Vivesur/Hawkins" },
-  { name: "Mona Lisa (painting)", category: "Artists & Music", loc: 499, locDisplay: "499", trueOrPositive: true, description: "Painting of the Mona Lisa by Leonardo da Vinci.", dateContext: "Vivesur/Hawkins" },
-  { name: "Differential Calculus", category: "Scientists & Mathematicians", loc: 498, locDisplay: "498", trueOrPositive: true, description: "Field of mathematics — differential calculus.", dateContext: "Vivesur/Hawkins" },
-  { name: "Janis Joplin", category: "Artists & Music", loc: 495, locDisplay: "495", trueOrPositive: true, description: "US singer Janis Joplin.", dateContext: "Vivesur/Hawkins" },
-  { name: "Johannes Brahms (music)", category: "Artists & Music", loc: 495, locDisplay: "495", trueOrPositive: true, description: "Music of Johannes Brahms.", dateContext: "Vivesur/Hawkins" },
-  { name: "Harry S. Truman", category: "Political Figures", loc: 495, locDisplay: "495", trueOrPositive: true, description: "33rd US President Harry S. Truman.", dateContext: "Vivesur/Hawkins" },
   { name: "Sir William Wallace of Elderslie", category: "Political Figures", loc: 490, locDisplay: "490", trueOrPositive: true, description: "(1270-1305) Scottish freedom fighter.", dateContext: "Vivesur/Hawkins" },
   { name: "René Descartes", category: "Philosophers", loc: 490, locDisplay: "490", trueOrPositive: true, description: "(1596-1650) French philosopher — Cogito ergo sum.", dateContext: "Vivesur/Hawkins" },
-  { name: "Franz Liszt (music)", category: "Artists & Music", loc: 490, locDisplay: "490", trueOrPositive: true, description: "(1811-1886) Hungarian musician and composer.", dateContext: "Vivesur/Hawkins" },
-  { name: "William James", category: "Philosophers", loc: 490, locDisplay: "490", trueOrPositive: true, description: "(1842-1910) US philosopher and psychologist — father of pragmatism.", dateContext: "Vivesur/Hawkins" },
   { name: "Ken Wilber", category: "Philosophers", loc: 490, locDisplay: "490", trueOrPositive: true, description: "Philosopher and integral theorist — AQAL framework.", dateContext: "Vivesur/Hawkins" },
   { name: "Sedona Method", category: "Spiritual Practices", loc: 490, locDisplay: "490", trueOrPositive: true, description: "Method of stress reduction and emotional release developed by Lester Levenson.", dateContext: "Vivesur/Hawkins" },
   { name: "World Cup (level of mastery in sports)", category: "Sports & Physical Activity", loc: 490, locDisplay: "490", trueOrPositive: true, description: "World Cup competition — level of mastery in sports.", dateContext: "Vivesur/Hawkins" },
-  { name: "Vincente Fox Quesada", category: "Political Figures", loc: 500, locDisplay: "500", trueOrPositive: true, description: "President of Mexico 2000-2006 — highest LOC for a president at time of calibration.", dateContext: "Vivesur/Hawkins" },
-  { name: "Templeton Foundation", category: "Organizations & Institutions", loc: 500, locDisplay: "500", trueOrPositive: true, description: "Philanthropic foundation for religious research and discoveries.", dateContext: "Vivesur/Hawkins" },
   { name: "Riverdance (music)", category: "Artists & Music", loc: 500, locDisplay: "500", trueOrPositive: true, description: "Irish music and dance show — Riverdance.", dateContext: "Vivesur/Hawkins" },
-  { name: "Doctors Without Borders", category: "Organizations & Institutions", loc: 500, locDisplay: "500", trueOrPositive: true, description: "International medical humanitarian organization — Médecins Sans Frontières.", dateContext: "Vivesur/Hawkins" },
-  { name: "Statue of Liberty", category: "Places of Spiritual Interest", loc: 500, locDisplay: "500", trueOrPositive: true, description: "Statue of Liberty — Liberty Island, New York.", dateContext: "Vivesur/Hawkins" },
-  { name: "Library of the Vatican", category: "Places of Spiritual Interest", loc: 500, locDisplay: "500", trueOrPositive: true, description: "Apostolic Library of the Vatican, Rome.", dateContext: "Vivesur/Hawkins" },
   { name: "Christian Sacraments (Baptism, Confirmation, Unction)", category: "Christianity", loc: 500, locDisplay: "500", trueOrPositive: true, description: "Core Christian sacraments: Baptism, Confirmation, Unction.", dateContext: "Vivesur/Hawkins" },
-  { name: "Cat's purr", category: "Animals", loc: 500, locDisplay: "500", trueOrPositive: true, description: "The purring of a cat calibrates at 500.", dateContext: "Vivesur/Hawkins" },
-  { name: "Ronald Reagan (societal influence)", category: "Political Figures", loc: 502, locDisplay: "502", trueOrPositive: true, description: "(1911-2004) 40th US President — societal influence.", dateContext: "Vivesur/Hawkins" },
   { name: "Arthur Neville Chamberlain (WWII intention)", category: "War Calibrations — WWII", loc: 500, locDisplay: "500", trueOrPositive: true, description: "(1869-1940) UK PM — intention during WWII appeasement at 500.", dateContext: "Vivesur/Hawkins" },
-  { name: "Frederic Chopin (music)", category: "Artists & Music", loc: 500, locDisplay: "500", trueOrPositive: true, description: "(1810-1849) French-Polish musician and composer.", dateContext: "Vivesur/Hawkins" },
   { name: "William Shakespeare (work)", category: "Writers & Literary", loc: 500, locDisplay: "500", trueOrPositive: true, description: "(1564-1616) English writer — books and plays of Shakespeare.", dateContext: "Vivesur/Hawkins" },
 
   // ADDITIONAL BOOKS CALIBRATED BY HAWKINS
@@ -4014,9 +3921,6 @@ const DATA = [
 
   // KEY STATEMENTS
   { name: "Statement: Life cannot be destroyed, only changes form", category: "Key Statements", loc: 1000, locDisplay: "1,000", trueOrPositive: true, description: "Calibrated as absolute truth", dateContext: null },
-  { name: "Statement: Consciousness is the irreducible stratum of all that exists", category: "Key Statements", loc: 1000, locDisplay: "1,000", trueOrPositive: true, description: "Calibrated as absolute truth", dateContext: null },
-  { name: "Statement: Creation and Evolution are one and the same reality", category: "Key Statements", loc: 1000, locDisplay: "1,000", trueOrPositive: true, description: "Calibrated as absolute truth", dateContext: null },
-  { name: "Statement: Nothing causes anything", category: "Key Statements", loc: 999, locDisplay: "999", trueOrPositive: true, description: "Hawkins' non-linear causality teaching", dateContext: null },
   { name: "Statement: Judgment day is every day", category: "Key Statements", loc: 999, locDisplay: "999", trueOrPositive: true, description: "Calibrated as essentially true", dateContext: null },
   { name: "Statement: Karma (concept of a spiritual ego)", category: "Key Statements", loc: 999, locDisplay: "999", trueOrPositive: true, description: "Karma as true construct", dateContext: null },
   { name: "Statement: The circumstances of birth are karmically perfect", category: "Key Statements", loc: 998, locDisplay: "998", trueOrPositive: true, description: "Near-absolute truth calibration", dateContext: null },
@@ -4350,6 +4254,15 @@ export default function HawkinsTable() {
   const hasFilters = selectedCats.length || selectedGroup !== "All" ||
     truthFilter !== "All" || locBandIdx !== 0 || sourceIdx !== 0 || starredOnly || countriesOnly;
 
+  // Count only the *advanced* dimensions (Compact/Starred are basic view toggles).
+  const advCount =
+    (selectedCats.length ? 1 : 0) +
+    (selectedGroup !== "All" ? 1 : 0) +
+    (truthFilter !== "All" ? 1 : 0) +
+    (locBandIdx !== 0 || locMin > 0 || locMax < 1000 ? 1 : 0) +
+    (sourceIdx !== 0 ? 1 : 0) +
+    (countriesOnly ? 1 : 0);
+
   // WCAG AA-compliant theme tokens
   const S = dark ? {
     bg: "#05060a", card: "rgba(20,24,38,0.72)", border: "rgba(148,163,184,0.14)",
@@ -4509,23 +4422,40 @@ export default function HawkinsTable() {
               </button>
             )}
           </div>
+          {/* Basic view toggles */}
           {pill(compact, () => setCompact(v => !v), "Compact")}
           {pill(starredOnly, () => setStarredOnly(v => !v), `★ Starred${Object.values(starred).filter(Boolean).length ? ` (${Object.values(starred).filter(Boolean).length})` : ""}`)}
+
+          {/* Divider separating basic controls from the advanced gateway */}
+          <div className="hide-mobile" style={{ width: 1, alignSelf: "stretch", minHeight: 24, background: S.border, margin: "0 2px" }} />
+
+          {/* Advanced filters gateway — visually distinct, with active-count badge */}
+          <button onClick={() => setShowAdvanced(v => !v)} style={{
+            background: showAdvanced ? S.grad : advCount ? (dark ? "rgba(252,211,77,0.12)" : "rgba(160,106,0,0.1)") : S.card,
+            border: `1px solid ${showAdvanced ? "transparent" : advCount ? S.gold : S.border}`,
+            color: showAdvanced ? (dark ? "#1a1000" : "#fff") : advCount ? S.gold : S.muted,
+            borderRadius: 999, padding: "9px 16px", fontSize: 13, fontWeight: 700, cursor: "pointer",
+            fontFamily: "inherit", whiteSpace: "nowrap", display: "flex", alignItems: "center", gap: 7,
+            boxShadow: showAdvanced ? S.shadow : "none",
+          }} className="glass-card">
+            <span style={{ fontSize: 14, lineHeight: 1 }}>⚙</span>
+            Advanced filters
+            {advCount > 0 && (
+              <span style={{
+                display: "inline-flex", alignItems: "center", justifyContent: "center",
+                minWidth: 18, height: 18, padding: "0 5px", borderRadius: 999,
+                fontSize: 11, fontWeight: 800, lineHeight: 1,
+                background: showAdvanced ? (dark ? "#1a1000" : "#fff") : S.gold,
+                color: showAdvanced ? S.gold : (dark ? "#1a1000" : "#fff"),
+              }}>{advCount}</span>
+            )}
+            <span style={{ fontSize: 10, opacity: 0.8 }}>{showAdvanced ? "▲" : "▼"}</span>
+          </button>
           {hasFilters && (
             <button onClick={clearAll} style={{ background: S.activeDanger, border: `1px solid ${S.red}44`, color: S.red, borderRadius: 999, padding: "9px 16px", fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: "inherit" }}>
               ✕ Clear filters
             </button>
           )}
-          <button onClick={() => setShowAdvanced(v => !v)} style={{
-            background: showAdvanced ? S.grad : S.card,
-            border: `1px solid ${showAdvanced ? "transparent" : hasFilters ? S.gold : S.border}`,
-            color: showAdvanced ? (dark ? "#1a1000" : "#fff") : hasFilters ? S.gold : S.muted,
-            borderRadius: 999, padding: "9px 18px", fontSize: 13, fontWeight: 600, cursor: "pointer",
-            fontFamily: "inherit", whiteSpace: "nowrap", display: "flex", alignItems: "center", gap: 6,
-            boxShadow: showAdvanced ? S.shadow : "none",
-          }} className="glass-card">
-            <span style={{ fontSize: 11 }}>{showAdvanced ? "▲" : "▼"}</span> Advanced filters{hasFilters ? " ●" : ""}
-          </button>
           <div style={{ fontSize: 14, color: S.muted, whiteSpace: "nowrap", marginLeft: "auto" }}>
             <span style={{ color: stats ? locColor(stats.avg, S) : S.muted, fontWeight: 700, fontFamily: "'JetBrains Mono', monospace" }}>{filtered.length.toLocaleString()}</span> results
           </div>
@@ -4589,14 +4519,14 @@ export default function HawkinsTable() {
                         <tr key="threshold-200">
                           <td colSpan={6} style={{ padding: 0 }}>
                             <div style={{
-                              display: "flex", alignItems: "center", justifyContent: "center", gap: 10,
-                              background: dark ? "#1a1206" : "#1a1206",
-                              color: S.gold, fontSize: 11, fontWeight: 700, letterSpacing: 1.2,
-                              textTransform: "uppercase", padding: "6px 12px",
-                              borderTop: `2px solid ${S.gold}`, borderBottom: `2px solid ${S.gold}`,
+                              display: "flex", alignItems: "center", justifyContent: "center", gap: 10, flexWrap: "wrap",
+                              background: "#1c1408",
+                              color: "#fde68a", fontSize: 11, fontWeight: 700, letterSpacing: 1.2,
+                              textTransform: "uppercase", padding: "7px 12px",
+                              borderTop: "2px solid #fbbf24", borderBottom: "2px solid #fbbf24",
                             }}>
-                              <span>▲ Calibration 200 — Threshold of Integrity</span>
-                              <span style={{ opacity: 0.7, fontWeight: 600, letterSpacing: 0.4, textTransform: "none" }}>above: Truth · Power &nbsp;·&nbsp; below: Falsehood · Force</span>
+                              <span style={{ color: "#fcd34d" }}>▲ Calibration 200 — Threshold of Integrity</span>
+                              <span style={{ color: "#e7c98a", fontWeight: 600, letterSpacing: 0.4, textTransform: "none" }}>above: Truth · Power &nbsp;·&nbsp; below: Falsehood · Force</span>
                             </div>
                           </td>
                         </tr>
@@ -4619,24 +4549,29 @@ export default function HawkinsTable() {
           const sectionRowLast = { marginBottom: 0 };
           const divider = { height: 1, background: S.border, margin: "0 -16px 16px", opacity: 0.5 };
           return (
-            <div style={{ background: S.card, border: `1px solid ${S.border}`, borderRadius: 12, padding: "16px", marginBottom: 14 }}>
+            <div className="fade-up" style={{ background: S.card, border: `1px solid ${S.gold}55`, borderRadius: 12, padding: "16px", marginBottom: 14, boxShadow: S.shadow }}>
 
-              {/* PANEL HEADER + CLEAR */}
-              {hasFilters && (
-                <>
-                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 8, marginBottom: 16 }}>
-                    <span style={{ fontSize: 13, color: S.muted }}>
-                      <span style={{ color: S.gold, fontWeight: 600 }}>{filtered.length.toLocaleString()}</span> results match your filters
-                    </span>
-                    <button onClick={clearAll} style={{
-                      background: S.activeDanger, border: `1px solid ${S.red}`, color: S.red,
-                      borderRadius: 20, padding: "7px 16px", fontSize: 13, fontWeight: 600, cursor: "pointer",
-                      fontFamily: "inherit", whiteSpace: "nowrap",
-                    }}>✕ Clear all filters</button>
-                  </div>
-                  <div style={divider} />
-                </>
-              )}
+              {/* PANEL HEADER — always shown so the advanced zone is unmistakable */}
+              <div style={{ display: "flex", alignItems: "center", gap: 11, flexWrap: "wrap", marginBottom: 14 }}>
+                <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 30, height: 30, borderRadius: 9, background: `${S.gold}1f`, color: S.gold, fontSize: 15 }}>⚙</span>
+                <div style={{ marginRight: "auto" }}>
+                  <div style={{ fontSize: 14, fontWeight: 700, color: S.text, lineHeight: 1.2 }}>Advanced filters</div>
+                  <div style={{ fontSize: 12, color: S.muted, marginTop: 1 }}>Refine by source, validity, level & category</div>
+                </div>
+                {advCount > 0 && (
+                  <span style={{ fontSize: 12, color: S.gold, fontWeight: 700, background: `${S.gold}1a`, border: `1px solid ${S.gold}55`, borderRadius: 999, padding: "4px 11px", whiteSpace: "nowrap" }}>
+                    {advCount} active · {filtered.length.toLocaleString()} results
+                  </span>
+                )}
+                {hasFilters && (
+                  <button onClick={clearAll} style={{
+                    background: S.activeDanger, border: `1px solid ${S.red}`, color: S.red,
+                    borderRadius: 999, padding: "6px 14px", fontSize: 13, fontWeight: 600, cursor: "pointer",
+                    fontFamily: "inherit", whiteSpace: "nowrap",
+                  }}>✕ Clear all</button>
+                )}
+              </div>
+              <div style={divider} />
 
               {/* SOURCE */}
               <div style={sectionRow}>
@@ -4824,12 +4759,13 @@ export default function HawkinsTable() {
                               const bandLoc = getLevelLoc(item.loc);
                               const c = locBandColor(bandLoc);
                               const onC = onBandColor(bandLoc);
-                              const scale = item.loc > 9999 ? "∞" : String(bandLoc);
+                              // Show the entry's own calibration (e.g. 960), not the band floor.
+                              const scale = item.loc > 9999 ? "∞" : item.locDisplay;
                               const cols = [
                                 ["God-view", ld.god_view],
                                 ["Life-view", ld.life_view],
                                 ["Level", ld.name],
-                                ["Scale", scale],
+                                ["Calibrates at", scale],
                                 ["Emotion", ld.emotion],
                                 ["Process", ld.process],
                               ];
@@ -4849,7 +4785,7 @@ export default function HawkinsTable() {
                                         borderLeft: idx === 0 ? "none" : `1px solid ${c}26`,
                                       }}>
                                         <div style={{ fontSize: 9.5, letterSpacing: 0.6, textTransform: "uppercase", color: S.muted, fontWeight: 600, marginBottom: 3, fontStyle: "normal" }}>{label}</div>
-                                        {label === "Scale" ? (
+                                        {label === "Calibrates at" ? (
                                           <span style={{ display: "inline-block", background: c, color: onC, fontWeight: 800, fontSize: 13, fontFamily: "'JetBrains Mono', monospace", borderRadius: 6, padding: "1px 9px", fontStyle: "normal" }}>{value}</span>
                                         ) : (
                                           <div style={{ fontSize: 13, fontWeight: label === "Level" ? 800 : 500, color: label === "Level" ? c : S.text, lineHeight: 1.25, fontStyle: "normal" }}>{value}</div>
