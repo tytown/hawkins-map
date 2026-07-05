@@ -4572,19 +4572,36 @@ export default function HawkinsTable() {
                   </tr>
                 </thead>
                 <tbody>
-                  {Object.keys(LEVEL_DESCRIPTIONS).map(Number).sort((a, b) => b - a).map((loc, i) => {
+                  {Object.keys(LEVEL_DESCRIPTIONS).map(Number).sort((a, b) => b - a).map((loc) => {
                     const l = LEVEL_DESCRIPTIONS[loc];
                     const color = locBandColor(loc);
-                    return (
-                      <tr key={loc} style={{ background: i % 2 ? S.rowOdd : S.rowEven, borderTop: `1px solid ${S.border}`, boxShadow: `inset 4px 0 0 ${color}` }}>
-                        <td style={{ padding: "8px 10px", textAlign: "right", fontWeight: 700, color, fontFamily: "monospace", whiteSpace: "nowrap" }}>{loc}</td>
-                        <td style={{ padding: "8px 10px", color, fontWeight: 600, whiteSpace: "nowrap" }}>{l.name}</td>
-                        <td style={{ padding: "8px 10px", color: S.text }}>{l.emotion}</td>
-                        <td style={{ padding: "8px 10px", color: S.text }}>{l.process}</td>
-                        <td style={{ padding: "8px 10px", color: S.text }}>{l.life_view}</td>
-                        <td style={{ padding: "8px 10px", color: S.muted }} className="hide-mobile">{l.god_view}</td>
-                      </tr>
-                    );
+                    const onC = onBandColor(loc);
+                    return [
+                      <tr key={loc} style={{ background: color, borderTop: `1px solid ${dark ? "#00000033" : "#ffffff55"}` }}>
+                        <td style={{ padding: "9px 10px", textAlign: "right", fontWeight: 800, color: onC, fontFamily: "monospace", whiteSpace: "nowrap" }}>{loc}</td>
+                        <td style={{ padding: "9px 10px", color: onC, fontWeight: 700, whiteSpace: "nowrap" }}>{l.name}</td>
+                        <td style={{ padding: "9px 10px", color: onC, opacity: 0.92 }}>{l.emotion}</td>
+                        <td style={{ padding: "9px 10px", color: onC, opacity: 0.92 }}>{l.process}</td>
+                        <td style={{ padding: "9px 10px", color: onC, opacity: 0.92 }}>{l.life_view}</td>
+                        <td style={{ padding: "9px 10px", color: onC, opacity: 0.75 }} className="hide-mobile">{l.god_view}</td>
+                      </tr>,
+                      loc === 200 ? (
+                        <tr key="threshold-200">
+                          <td colSpan={6} style={{ padding: 0 }}>
+                            <div style={{
+                              display: "flex", alignItems: "center", justifyContent: "center", gap: 10,
+                              background: dark ? "#1a1206" : "#1a1206",
+                              color: S.gold, fontSize: 11, fontWeight: 700, letterSpacing: 1.2,
+                              textTransform: "uppercase", padding: "6px 12px",
+                              borderTop: `2px solid ${S.gold}`, borderBottom: `2px solid ${S.gold}`,
+                            }}>
+                              <span>▲ Calibration 200 — Threshold of Integrity</span>
+                              <span style={{ opacity: 0.7, fontWeight: 600, letterSpacing: 0.4, textTransform: "none" }}>above: Truth · Power &nbsp;·&nbsp; below: Falsehood · Force</span>
+                            </div>
+                          </td>
+                        </tr>
+                      ) : null,
+                    ];
                   })}
                 </tbody>
               </table>
