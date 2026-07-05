@@ -4183,6 +4183,35 @@ function locColor(loc, S) {
   return S.red;
 }
 
+// Exact Map of Consciousness band colors — matches Hawkins' printed chart.
+function locBandColor(loc) {
+  if (loc >= 700) return "#8b5cf6"; // purple   700–1000  Enlightenment
+  if (loc >= 600) return "#3b82f6"; // blue     600       Peace
+  if (loc >= 540) return "#6366f1"; // indigo   540       Joy
+  if (loc >= 250) return "#14b8a6"; // teal     500–250   Love → Neutrality
+  if (loc >= 200) return "#eab308"; // yellow   200       Courage
+  if (loc >= 175) return "#ca8a04"; // gold     175       Pride
+  if (loc >= 100) return "#f97316"; // orange   150–100   Anger → Fear
+  if (loc >= 50)  return "#ea580c"; // red-orng 75–50     Grief → Apathy
+  return "#b91c1c";                 // dark red 30–20     Guilt → Shame
+}
+
+// Readable text color over a solid band swatch (yellow/gold need dark ink).
+function onBandColor(loc) {
+  return loc >= 175 && loc < 250 ? "#1a1200" : "#fff";
+}
+
+// The calibrated level a value falls into (e.g. 205 → 200), for the Scale column.
+function getLevelLoc(loc) {
+  if (loc > 9999) return 1000;
+  const levels = Object.keys(LEVEL_DESCRIPTIONS).map(Number).sort((a, b) => a - b);
+  let match = levels[0];
+  for (const l of levels) {
+    if (loc >= l) match = l;
+  }
+  return match;
+}
+
 const LEVEL_DESCRIPTIONS = {
   20:  { name: "Shame",     emotion: "Humiliation",  process: "Destruction",     god_view: "Despising",    life_view: "Miserable",   description: "The lowest level — barely above death. Characterized by self-contempt, banishment, and the elimination of self. Prone to cruelty toward self and others. The origin of much illness and severe psychological pathology." },
   30:  { name: "Guilt",     emotion: "Blame",        process: "Destruction",     god_view: "Vindictive",   life_view: "Evil",        description: "Associated with remorse, self-punishment, masochism, and victimhood. The source of much psychosomatic disease. Society uses guilt as a mechanism of control." },
@@ -4545,9 +4574,9 @@ export default function HawkinsTable() {
                 <tbody>
                   {Object.keys(LEVEL_DESCRIPTIONS).map(Number).sort((a, b) => b - a).map((loc, i) => {
                     const l = LEVEL_DESCRIPTIONS[loc];
-                    const color = locColor(loc, S);
+                    const color = locBandColor(loc);
                     return (
-                      <tr key={loc} style={{ background: i % 2 ? S.rowOdd : S.rowEven, borderTop: `1px solid ${S.border}` }}>
+                      <tr key={loc} style={{ background: i % 2 ? S.rowOdd : S.rowEven, borderTop: `1px solid ${S.border}`, boxShadow: `inset 4px 0 0 ${color}` }}>
                         <td style={{ padding: "8px 10px", textAlign: "right", fontWeight: 700, color, fontFamily: "monospace", whiteSpace: "nowrap" }}>{loc}</td>
                         <td style={{ padding: "8px 10px", color, fontWeight: 600, whiteSpace: "nowrap" }}>{l.name}</td>
                         <td style={{ padding: "8px 10px", color: S.text }}>{l.emotion}</td>
@@ -4771,20 +4800,47 @@ export default function HawkinsTable() {
                                 <span style={{ marginLeft: 10, color: S.muted, fontStyle: "normal", fontSize: 12, opacity: 0.85 }}>— {item.dateContext}</span>
                               )}
                             </div>
-                            {/* Level band description */}
+                            {/* Map of Consciousness — color-coded band for this entry's level */}
                             {(() => {
                               const ld = getLevelDescription(item.loc);
                               if (!ld) return null;
+                              const bandLoc = getLevelLoc(item.loc);
+                              const c = locBandColor(bandLoc);
+                              const onC = onBandColor(bandLoc);
+                              const scale = item.loc > 9999 ? "∞" : String(bandLoc);
+                              const cols = [
+                                ["God-view", ld.god_view],
+                                ["Life-view", ld.life_view],
+                                ["Level", ld.name],
+                                ["Scale", scale],
+                                ["Emotion", ld.emotion],
+                                ["Process", ld.process],
+                              ];
                               return (
-                                <div style={{ background: dark ? "#0a0f1a" : S.faint, border: `1px solid ${S.border}`, borderRadius: 8, padding: "10px 14px", marginTop: 4 }}>
-                                  <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 6, alignItems: "baseline" }}>
-                                    <span style={{ color: locColor(item.loc, S), fontWeight: 700, fontSize: 15, fontStyle: "normal" }}>{ld.name}</span>
-                                    <span style={{ color: S.muted, fontSize: 12, fontStyle: "normal" }}>Emotion: <span style={{ color: S.text }}>{ld.emotion}</span></span>
-                                    <span style={{ color: S.muted, fontSize: 12, fontStyle: "normal" }}>Process: <span style={{ color: S.text }}>{ld.process}</span></span>
-                                    <span style={{ color: S.muted, fontSize: 12, fontStyle: "normal" }}>God-view: <span style={{ color: S.text }}>{ld.god_view}</span></span>
-                                    <span style={{ color: S.muted, fontSize: 12, fontStyle: "normal" }}>Life-view: <span style={{ color: S.text }}>{ld.life_view}</span></span>
+                                <div style={{ marginTop: 4 }}>
+                                  <div style={{
+                                    display: "flex", alignItems: "stretch", flexWrap: "wrap",
+                                    borderRadius: 10, overflow: "hidden",
+                                    border: `1px solid ${c}66`,
+                                    background: `linear-gradient(90deg, ${c}26, ${c}0d)`,
+                                    boxShadow: `inset 4px 0 0 ${c}`,
+                                  }}>
+                                    {cols.map(([label, value], idx) => (
+                                      <div key={label} style={{
+                                        flex: "1 1 92px", minWidth: 92,
+                                        padding: "8px 12px",
+                                        borderLeft: idx === 0 ? "none" : `1px solid ${c}26`,
+                                      }}>
+                                        <div style={{ fontSize: 9.5, letterSpacing: 0.6, textTransform: "uppercase", color: S.muted, fontWeight: 600, marginBottom: 3, fontStyle: "normal" }}>{label}</div>
+                                        {label === "Scale" ? (
+                                          <span style={{ display: "inline-block", background: c, color: onC, fontWeight: 800, fontSize: 13, fontFamily: "'JetBrains Mono', monospace", borderRadius: 6, padding: "1px 9px", fontStyle: "normal" }}>{value}</span>
+                                        ) : (
+                                          <div style={{ fontSize: 13, fontWeight: label === "Level" ? 800 : 500, color: label === "Level" ? c : S.text, lineHeight: 1.25, fontStyle: "normal" }}>{value}</div>
+                                        )}
+                                      </div>
+                                    ))}
                                   </div>
-                                  <div style={{ color: S.muted, fontSize: 13, fontStyle: "normal", lineHeight: 1.5 }}>{ld.description}</div>
+                                  <div style={{ color: S.muted, fontSize: 13, fontStyle: "normal", lineHeight: 1.5, marginTop: 8 }}>{ld.description}</div>
                                 </div>
                               );
                             })()}
