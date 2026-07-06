@@ -4466,13 +4466,18 @@ export default function HawkinsTable() {
         </div>
 
         {/* LEVELS-OF-CONSCIOUSNESS MAP CTA + PANEL (single container) */}
-        <div className="glass-card fade-up" style={{
-          marginBottom: 14,
-          background: S.card,
-          border: `1px solid ${S.gold}40`,
+        {/* Set apart from the interactive content as a gold-tinted reference key */}
+        <div className="fade-up" style={{
+          marginTop: 4, marginBottom: 22,
+          background: dark
+            ? "linear-gradient(180deg, rgba(252,211,77,0.10), rgba(252,211,77,0.02))"
+            : "linear-gradient(180deg, rgba(160,106,0,0.10), rgba(255,255,255,0.5))",
+          border: `1.5px solid ${S.gold}80`,
           borderRadius: 16,
           overflow: "hidden",
-          boxShadow: showLevelsMap ? S.shadow : "none",
+          boxShadow: showLevelsMap
+            ? `0 12px 44px -8px ${S.gold}44, ${S.shadow}`
+            : `0 6px 22px -6px ${S.gold}33`,
         }}>
           <button
             onClick={() => setShowLevelsMap(v => !v)}
@@ -4480,14 +4485,15 @@ export default function HawkinsTable() {
               width: "100%", textAlign: "left",
               background: "transparent",
               border: "none",
-              borderBottom: showLevelsMap ? `1px solid ${S.gold}33` : "none",
+              borderBottom: showLevelsMap ? `1px solid ${S.gold}44` : "none",
               color: S.text,
               padding: "16px 20px", fontSize: 14, cursor: "pointer",
               fontFamily: "inherit", display: "flex", alignItems: "center", gap: 10,
             }}
           >
-            <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 28, height: 28, borderRadius: 8, background: `${S.gold}1f`, color: S.gold, fontSize: 15 }}>◈</span>
-            <span style={{ fontWeight: 600, color: S.text, fontSize: 15 }}>Map of the Levels of Consciousness</span>
+            <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 30, height: 30, borderRadius: 8, background: S.gold, color: dark ? "#1a1000" : "#fff", fontSize: 16, boxShadow: `0 2px 8px ${S.gold}55` }}>◈</span>
+            <span style={{ fontWeight: 700, color: S.text, fontSize: 15 }}>Map of the Levels of Consciousness</span>
+            <span style={{ fontSize: 9.5, fontWeight: 700, letterSpacing: 1, textTransform: "uppercase", color: S.gold, border: `1px solid ${S.gold}66`, borderRadius: 999, padding: "2px 8px", whiteSpace: "nowrap" }}>Reference</span>
             <span style={{ color: S.muted, fontSize: 12 }} className="hide-mobile">— Hawkins' calibrated scale from Shame (20) to Enlightenment (1000)</span>
             <span style={{ marginLeft: "auto", color: S.gold, fontSize: 12 }}>{showLevelsMap ? "▲" : "▼"}</span>
           </button>
