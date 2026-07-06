@@ -4165,6 +4165,7 @@ export default function HawkinsTable() {
   const [compact, setCompact] = useState(false);
   const [showCatPanel, setShowCatPanel] = useState(false);
   const [showAdvanced, setShowAdvanced] = useState(false);
+  const [showMore, setShowMore] = useState(false);
   const [showLevelsMap, setShowLevelsMap] = useState(false);
   const [countriesOnly, setCountriesOnly] = useState(false);
   const [dark, setDark] = useState(true);
@@ -4254,14 +4255,17 @@ export default function HawkinsTable() {
   const hasFilters = selectedCats.length || selectedGroup !== "All" ||
     truthFilter !== "All" || locBandIdx !== 0 || sourceIdx !== 0 || starredOnly || countriesOnly;
 
-  // Count only the *advanced* dimensions (Compact/Starred are basic view toggles).
-  const advCount =
-    (selectedCats.length ? 1 : 0) +
-    (selectedGroup !== "All" ? 1 : 0) +
-    (truthFilter !== "All" ? 1 : 0) +
-    (locBandIdx !== 0 || locMin > 0 || locMax < 1000 ? 1 : 0) +
+  // Filter counts, split into the basics shown up front vs the advanced extras.
+  const locActive = locBandIdx !== 0 || locMin > 0 || locMax < 1000;
+  const basicCount =
+    (locActive ? 1 : 0) +
+    (truthFilter !== "All" ? 1 : 0);
+  const advOnlyCount =
     (sourceIdx !== 0 ? 1 : 0) +
+    (selectedGroup !== "All" ? 1 : 0) +
+    (selectedCats.length ? 1 : 0) +
     (countriesOnly ? 1 : 0);
+  const advCount = basicCount + advOnlyCount; // total active filters (badge on gateway)
 
   // WCAG AA-compliant theme tokens
   const S = dark ? {
@@ -4426,10 +4430,10 @@ export default function HawkinsTable() {
           {pill(compact, () => setCompact(v => !v), "Compact")}
           {pill(starredOnly, () => setStarredOnly(v => !v), `★ Starred${Object.values(starred).filter(Boolean).length ? ` (${Object.values(starred).filter(Boolean).length})` : ""}`)}
 
-          {/* Divider separating basic controls from the advanced gateway */}
+          {/* Divider separating view toggles from the filters gateway */}
           <div className="hide-mobile" style={{ width: 1, alignSelf: "stretch", minHeight: 24, background: S.border, margin: "0 2px" }} />
 
-          {/* Advanced filters gateway — visually distinct, with active-count badge */}
+          {/* Filters gateway — opens one box with basics up front + advanced inside */}
           <button onClick={() => setShowAdvanced(v => !v)} style={{
             background: showAdvanced ? S.grad : advCount ? (dark ? "rgba(252,211,77,0.12)" : "rgba(160,106,0,0.1)") : S.card,
             border: `1px solid ${showAdvanced ? "transparent" : advCount ? S.gold : S.border}`,
@@ -4439,7 +4443,7 @@ export default function HawkinsTable() {
             boxShadow: showAdvanced ? S.shadow : "none",
           }} className="glass-card">
             <span style={{ fontSize: 14, lineHeight: 1 }}>⚙</span>
-            Advanced filters
+            Filters
             {advCount > 0 && (
               <span style={{
                 display: "inline-flex", alignItems: "center", justifyContent: "center",
@@ -4551,12 +4555,12 @@ export default function HawkinsTable() {
           return (
             <div className="fade-up" style={{ background: S.card, border: `1px solid ${S.gold}55`, borderRadius: 12, padding: "16px", marginBottom: 14, boxShadow: S.shadow }}>
 
-              {/* PANEL HEADER — always shown so the advanced zone is unmistakable */}
+              {/* PANEL HEADER */}
               <div style={{ display: "flex", alignItems: "center", gap: 11, flexWrap: "wrap", marginBottom: 14 }}>
                 <span style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", width: 30, height: 30, borderRadius: 9, background: `${S.gold}1f`, color: S.gold, fontSize: 15 }}>⚙</span>
                 <div style={{ marginRight: "auto" }}>
-                  <div style={{ fontSize: 14, fontWeight: 700, color: S.text, lineHeight: 1.2 }}>Advanced filters</div>
-                  <div style={{ fontSize: 12, color: S.muted, marginTop: 1 }}>Refine by source, validity, level & category</div>
+                  <div style={{ fontSize: 14, fontWeight: 700, color: S.text, lineHeight: 1.2 }}>Filters</div>
+                  <div style={{ fontSize: 12, color: S.muted, marginTop: 1 }}>Narrow the list by level & validity — open Advanced for more</div>
                 </div>
                 {advCount > 0 && (
                   <span style={{ fontSize: 12, color: S.gold, fontWeight: 700, background: `${S.gold}1a`, border: `1px solid ${S.gold}55`, borderRadius: 999, padding: "4px 11px", whiteSpace: "nowrap" }}>
@@ -4573,27 +4577,9 @@ export default function HawkinsTable() {
               </div>
               <div style={divider} />
 
-              {/* SOURCE */}
-              <div style={sectionRow}>
-                <label style={sectionLabel}>Source</label>
-                <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                  {SOURCE_OPTIONS.map((s, i) => pill(sourceIdx === i, () => { setSourceIdx(i); setPage(1); }, s.label))}
-                </div>
-              </div>
-              <div style={divider} />
+              {/* ── BASICS (always shown) ── */}
 
-              {/* TRUTH */}
-              <div style={sectionRow}>
-                <label style={sectionLabel}>Truth / Validity</label>
-                <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                  {[["All","All"],["True","✓ True"],["False","✗ False"],["Neutral","— Neutral"]].map(([v, l]) =>
-                    pill(truthFilter === v, () => { setTruthFilter(v); setPage(1); }, l, v === "False")
-                  )}
-                </div>
-              </div>
-              <div style={divider} />
-
-              {/* LOC BAND */}
+              {/* LOC BAND — the most useful primary filter */}
               <div style={sectionRow}>
                 <label style={sectionLabel}>Level of Consciousness</label>
                 <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: locBandIdx === 0 ? 12 : 0 }}>
@@ -4618,55 +4604,93 @@ export default function HawkinsTable() {
               </div>
               <div style={divider} />
 
-              {/* CATEGORY */}
-              <div style={sectionRow}>
-                <label style={sectionLabel}>Category Group</label>
-                <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 10 }}>
-                  {groups.map(g => pill(selectedGroup === g, () => { setSelectedGroup(g); setSelectedCats([]); setPage(1); }, g))}
-                </div>
-                <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
-                  <button onClick={() => setShowCatPanel(v => !v)} style={{
-                    background: showCatPanel ? S.activeBlue : "none",
-                    border: `1px solid ${showCatPanel ? S.blue : S.border}`,
-                    color: showCatPanel ? S.activeBlueText : S.muted,
-                    borderRadius: 20, padding: "5px 13px", fontSize: 13, cursor: "pointer",
-                    fontFamily: "inherit", whiteSpace: "nowrap", display: "flex", alignItems: "center", gap: 4,
-                  }}>
-                    {showCatPanel ? "▲" : "▼"} Browse {ALL_CATEGORIES.filter(c => selectedGroup === "All" || groupForCategory(c) === selectedGroup).length} categories
-                    {selectedCats.length ? ` (${selectedCats.length} selected)` : ""}
-                  </button>
-                  {selectedCats.length > 0 && (
-                    <button onClick={() => setSelectedCats([])} style={{ background: "none", border: "none", color: S.red, fontSize: 13, cursor: "pointer" }}>✕ clear categories</button>
+              {/* TRUTH */}
+              <div style={showMore ? sectionRow : sectionRowLast}>
+                <label style={sectionLabel}>Truth / Validity</label>
+                <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+                  {[["All","All"],["True","✓ True"],["False","✗ False"],["Neutral","— Neutral"]].map(([v, l]) =>
+                    pill(truthFilter === v, () => { setTruthFilter(v); setPage(1); }, l, v === "False")
                   )}
                 </div>
-                {showCatPanel && (
-                  <div style={{ marginTop: 10, background: dark ? S.theadBg : S.bg, border: `1px solid ${S.border}`, borderRadius: 8, padding: 12, display: "flex", flexWrap: "wrap", gap: 6, maxHeight: 220, overflowY: "auto" }}>
-                    {ALL_CATEGORIES
-                      .filter(c => selectedGroup === "All" || groupForCategory(c) === selectedGroup)
-                      .map(c => {
-                        const active = selectedCats.includes(c);
-                        return (
-                          <button key={c} onClick={() => toggleCat(c)} style={{
-                            background: active ? S.activeBlue : S.card,
-                            border: `1px solid ${active ? S.blue : S.border}`,
-                            color: active ? S.activeBlueText : S.muted,
-                            borderRadius: 4, padding: "4px 10px", fontSize: 13, cursor: "pointer",
-                            fontFamily: "inherit",
-                          }}>{c}</button>
-                        );
-                      })}
-                  </div>
-                )}
               </div>
-              <div style={divider} />
 
-              {/* QUICK FILTERS */}
-              <div style={sectionRowLast}>
-                <label style={sectionLabel}>Quick filters</label>
-                <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                  {pill(countriesOnly, () => { setCountriesOnly(v => !v); setPage(1); }, "🌍 Countries only")}
+              {/* ── ADVANCED (expands inside this box) ── */}
+              <div style={{ ...divider, marginBottom: showMore ? 16 : 0, marginTop: 16 }} />
+              <button onClick={() => setShowMore(v => !v)} style={{
+                display: "flex", alignItems: "center", gap: 8, width: "100%",
+                background: "none", border: "none", cursor: "pointer", fontFamily: "inherit",
+                color: showMore ? S.text : S.muted, padding: 0, textAlign: "left",
+              }}>
+                <span style={{ fontSize: 11, color: S.gold }}>{showMore ? "▲" : "▼"}</span>
+                <span style={{ fontSize: 13, fontWeight: 700 }}>Advanced filters</span>
+                <span style={{ fontSize: 12, color: S.muted, fontWeight: 400 }}>— source, category, quick filters</span>
+                {advOnlyCount > 0 && (
+                  <span style={{ marginLeft: "auto", fontSize: 11, fontWeight: 800, color: dark ? "#1a1000" : "#fff", background: S.gold, borderRadius: 999, minWidth: 18, height: 18, padding: "0 6px", display: "inline-flex", alignItems: "center", justifyContent: "center" }}>{advOnlyCount}</span>
+                )}
+              </button>
+
+              {showMore && (
+                <div style={{ marginTop: 16 }}>
+                  {/* SOURCE */}
+                  <div style={sectionRow}>
+                    <label style={sectionLabel}>Source</label>
+                    <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+                      {SOURCE_OPTIONS.map((s, i) => pill(sourceIdx === i, () => { setSourceIdx(i); setPage(1); }, s.label))}
+                    </div>
+                  </div>
+                  <div style={divider} />
+
+                  {/* CATEGORY */}
+                  <div style={sectionRow}>
+                    <label style={sectionLabel}>Category Group</label>
+                    <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 10 }}>
+                      {groups.map(g => pill(selectedGroup === g, () => { setSelectedGroup(g); setSelectedCats([]); setPage(1); }, g))}
+                    </div>
+                    <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
+                      <button onClick={() => setShowCatPanel(v => !v)} style={{
+                        background: showCatPanel ? S.activeBlue : "none",
+                        border: `1px solid ${showCatPanel ? S.blue : S.border}`,
+                        color: showCatPanel ? S.activeBlueText : S.muted,
+                        borderRadius: 20, padding: "5px 13px", fontSize: 13, cursor: "pointer",
+                        fontFamily: "inherit", whiteSpace: "nowrap", display: "flex", alignItems: "center", gap: 4,
+                      }}>
+                        {showCatPanel ? "▲" : "▼"} Browse {ALL_CATEGORIES.filter(c => selectedGroup === "All" || groupForCategory(c) === selectedGroup).length} categories
+                        {selectedCats.length ? ` (${selectedCats.length} selected)` : ""}
+                      </button>
+                      {selectedCats.length > 0 && (
+                        <button onClick={() => setSelectedCats([])} style={{ background: "none", border: "none", color: S.red, fontSize: 13, cursor: "pointer" }}>✕ clear categories</button>
+                      )}
+                    </div>
+                    {showCatPanel && (
+                      <div style={{ marginTop: 10, background: dark ? S.theadBg : S.bg, border: `1px solid ${S.border}`, borderRadius: 8, padding: 12, display: "flex", flexWrap: "wrap", gap: 6, maxHeight: 220, overflowY: "auto" }}>
+                        {ALL_CATEGORIES
+                          .filter(c => selectedGroup === "All" || groupForCategory(c) === selectedGroup)
+                          .map(c => {
+                            const active = selectedCats.includes(c);
+                            return (
+                              <button key={c} onClick={() => toggleCat(c)} style={{
+                                background: active ? S.activeBlue : S.card,
+                                border: `1px solid ${active ? S.blue : S.border}`,
+                                color: active ? S.activeBlueText : S.muted,
+                                borderRadius: 4, padding: "4px 10px", fontSize: 13, cursor: "pointer",
+                                fontFamily: "inherit",
+                              }}>{c}</button>
+                            );
+                          })}
+                      </div>
+                    )}
+                  </div>
+                  <div style={divider} />
+
+                  {/* QUICK FILTERS */}
+                  <div style={sectionRowLast}>
+                    <label style={sectionLabel}>Quick filters</label>
+                    <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+                      {pill(countriesOnly, () => { setCountriesOnly(v => !v); setPage(1); }, "🌍 Countries only")}
+                    </div>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           );
         })()}
